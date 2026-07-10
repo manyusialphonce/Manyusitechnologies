@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manyusi Technologies Limited — Suluhisho za Kiteknolojia Tanzania</title>
+<meta name="description" content="Manyusi Technologies Limited — Kampuni ya Kitanzania inayotoa suluhisho za teknolojia: uundaji wa tovuti na programu, mitandao, usalama mtandaoni, wingu, CCTV, uchoraji picha na mafunzo ya TEHAMA.">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B3D66;
+    --navy-deep:#062945;
+    --green:#3FA535;
+    --orange:#E8720C;
+    --paper:#F6F8FA;
+    --ink:#16212E;
+    --ink-soft:#4A5A6A;
+    --line:#E1E7EC;
+    --white:#FFFFFF;
+    --radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--green);
+    font-weight:500;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  /* ---------- signature: data stream ---------- */
+  .stream{
+    position:absolute;
+    left:50%;
+    top:0;
+    width:2px;
+    height:100%;
+    transform:translateX(-50%);
+    background:linear-gradient(180deg,#1E7FD1 0%, var(--green) 45%, var(--orange) 100%);
+    opacity:0.16;
+    z-index:0;
+  }
+  .stream-dot{
+    position:absolute;
+    left:50%;
+    width:8px;height:8px;
+    border-radius:50%;
+    transform:translateX(-50%);
+    background:var(--green);
+    box-shadow:0 0 12px 2px rgba(63,165,53,0.6);
+    animation:travel 7s linear infinite;
+  }
+  @keyframes travel{
+    0%{top:-2%;opacity:0;}
+    8%{opacity:1;}
+    92%{opacity:1;}
+    100%{top:102%;opacity:0;}
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,248,250,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 28px;
+    max-width:1160px;margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand img{height:38px;width:38px;}
+  .brand span{font-family:'Space Grotesk';font-weight:700;font-size:1.05rem;color:var(--navy-deep);}
+  .brand b{color:var(--green);}
+  nav.links{display:flex;gap:30px;align-items:center;}
+  nav.links a{font-size:0.92rem;font-weight:500;color:var(--ink-soft);transition:color .2s;}
+  nav.links a:hover{color:var(--navy);}
+  .cta-btn{
+    background:var(--navy);color:var(--white);
+    padding:10px 20px;border-radius:100px;
+    font-weight:600;font-size:0.88rem;
+    transition:transform .2s, background .2s;
+    white-space:nowrap;
+  }
+  .cta-btn:hover{background:var(--navy-deep);transform:translateY(-1px);}
+  .burger{display:none;background:none;border:none;font-size:1.5rem;color:var(--navy);cursor:pointer;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:90px 28px 70px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    max-width:1160px;margin:0 auto;
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:50px;align-items:center;
+  }
+  .hero h1{font-size:clamp(2.2rem,4.2vw,3.4rem);color:var(--navy-deep);margin:16px 0 20px;}
+  .hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--navy) 0%, var(--green) 55%, var(--orange) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero p{font-size:1.08rem;color:var(--ink-soft);max-width:520px;margin-bottom:32px;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--green);color:var(--white);
+    padding:14px 26px;border-radius:100px;font-weight:600;
+    transition:transform .2s,box-shadow .2s;
+    box-shadow:0 8px 20px -8px rgba(63,165,53,0.6);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 24px -8px rgba(63,165,53,0.7);}
+  .btn-ghost{
+    border:1.5px solid var(--line);color:var(--navy-deep);
+    padding:13px 24px;border-radius:100px;font-weight:600;
+    transition:border-color .2s,background .2s;
+  }
+  .btn-ghost:hover{border-color:var(--navy);background:var(--white);}
+
+  .hero-visual{
+    position:relative;display:flex;align-items:center;justify-content:center;
+  }
+  .orbit-wrap{position:relative;width:340px;height:340px;}
+  .orbit{
+    position:absolute;inset:0;border-radius:50%;
+    border:1.5px dashed rgba(11,61,102,0.18);
+    animation:spin 40s linear infinite;
+  }
+  .orbit.o2{inset:34px;border-color:rgba(63,165,53,0.22);animation-duration:30s;animation-direction:reverse;}
+  .orbit.o3{inset:68px;border-color:rgba(232,114,12,0.22);animation-duration:22s;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .hero-logo{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  }
+  .hero-logo img{width:190px;height:190px;filter:drop-shadow(0 18px 30px rgba(11,61,102,0.25));}
+  .node{
+    position:absolute;width:12px;height:12px;border-radius:50%;
+    box-shadow:0 0 0 6px rgba(255,255,255,0.6);
+  }
+  .n1{top:6%;left:18%;background:var(--navy);animation:spin 40s linear infinite;transform-origin:170px 164px;}
+  .n2{top:70%;left:82%;background:var(--orange);}
+  .n3{top:82%;left:12%;background:var(--green);}
+
+  /* ---------- section shells ---------- */
+  section{position:relative;padding:86px 28px;}
+  .section-head{max-width:640px;margin-bottom:50px;}
+  .section-head h2{font-size:clamp(1.7rem,3vw,2.3rem);color:var(--navy-deep);margin-top:10px;}
+  .section-head p{color:var(--ink-soft);margin-top:14px;font-size:1.02rem;}
+
+  /* ---------- about ---------- */
+  .about{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;max-width:1160px;margin:0 auto;}
+  .about p{color:var(--ink-soft);margin-bottom:16px;font-size:1.02rem;}
+  .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px;}
+  .stat{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 16px;text-align:left;
+  }
+  .stat b{display:block;font-family:'Space Grotesk';font-size:1.7rem;color:var(--navy-deep);}
+  .stat span{font-size:0.82rem;color:var(--ink-soft);}
+
+  /* ---------- services ---------- */
+  .services{max-width:1160px;margin:0 auto;}
+  .service-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  }
+  .service-card{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 22px;transition:transform .25s, box-shadow .25s, border-color .25s;
+    position:relative;overflow:hidden;
+  }
+  .service-card::before{
+    content:'';position:absolute;top:0;left:0;width:100%;height:3px;
+    background:var(--accent,var(--navy));
+    transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .service-card:hover{transform:translateY(-5px);box-shadow:0 16px 30px -18px rgba(11,61,102,0.3);border-color:transparent;}
+  .service-card:hover::before{transform:scaleX(1);}
+  .service-icon{
+    width:44px;height:44px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--accent-bg,rgba(11,61,102,0.08));
+    color:var(--accent,var(--navy));
+    margin-bottom:16px;font-size:1.3rem;
+  }
+  .service-card h3{font-size:1.05rem;color:var(--navy-deep);margin-bottom:8px;}
+  .service-card p{font-size:0.9rem;color:var(--ink-soft);}
+
+  /* ---------- product spotlight ---------- */
+  .spotlight{
+    background:linear-gradient(120deg,var(--navy-deep) 0%, var(--navy) 60%, #0d5a3f 130%);
+    color:var(--white);border-radius:24px;max-width:1160px;margin:0 auto;
+    padding:60px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;
+    position:relative;overflow:hidden;
+  }
+  .spotlight::after{
+    content:'';position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(232,114,12,0.35),transparent 70%);
+  }
+  .spotlight .eyebrow{color:#8FD1FF;}
+  .spotlight h2{font-size:clamp(1.6rem,3vw,2.1rem);margin:12px 0 16px;}
+  .spotlight p{color:#CBD9E4;font-size:1rem;margin-bottom:22px;}
+  .spotlight ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:26px;}
+  .spotlight li{font-size:0.94rem;color:#E6EEF3;padding-left:22px;position:relative;}
+  .spotlight li::before{content:'→';position:absolute;left:0;color:var(--orange);font-weight:700;}
+  .spotlight-card{
+    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);
+    border-radius:16px;padding:30px;backdrop-filter:blur(6px);
+  }
+  .spotlight-card .tag{font-family:'IBM Plex Mono';font-size:0.7rem;letter-spacing:0.1em;color:var(--orange);text-transform:uppercase;}
+  .spotlight-card h4{font-size:1.3rem;margin:10px 0 8px;}
+  .spotlight-card p{font-size:0.88rem;color:#C7D5DF;margin-bottom:0;}
+
+  /* ---------- process ---------- */
+  .process{max-width:1160px;margin:0 auto;}
+  .process-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+  .process-row::before{
+    content:'';position:absolute;top:26px;left:8%;right:8%;height:2px;
+    background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 14px);
+  }
+  .p-step{padding:0 16px;position:relative;}
+  .p-num{
+    width:52px;height:52px;border-radius:50%;background:var(--white);border:2px solid var(--navy);
+    display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:700;
+    color:var(--navy);margin-bottom:18px;position:relative;z-index:1;
+  }
+  .p-step:nth-child(2) .p-num{border-color:var(--green);color:var(--green);}
+  .p-step:nth-child(3) .p-num{border-color:var(--orange);color:var(--orange);}
+  .p-step:nth-child(4) .p-num{border-color:var(--navy);color:var(--navy);}
+  .p-step h4{font-size:1.02rem;color:var(--navy-deep);margin-bottom:8px;}
+  .p-step p{font-size:0.88rem;color:var(--ink-soft);}
+
+  /* ---------- contact ---------- */
+  .contact{background:var(--white);border-top:1px solid var(--line);}
+  .contact-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .contact-info h2{font-size:clamp(1.7rem,3vw,2.2rem);color:var(--navy-deep);margin-bottom:16px;}
+  .contact-info p{color:var(--ink-soft);margin-bottom:26px;}
+  .info-line{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px;}
+  .info-line .ic{
+    width:38px;height:38px;border-radius:9px;background:rgba(63,165,53,0.1);color:var(--green);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;
+  }
+  .info-line b{display:block;color:var(--navy-deep);font-size:0.92rem;}
+  .info-line span{font-size:0.9rem;color:var(--ink-soft);}
+  .social-row{display:flex;gap:12px;margin-top:24px;}
+  .social-row a{
+    width:38px;height:38px;border-radius:50%;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(--navy);
+    transition:background .2s,color .2s;
+  }
+  .social-row a:hover{background:var(--navy);color:var(--white);}
+
+  form{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:0.82rem;font-weight:600;color:var(--navy-deep);margin-bottom:6px;}
+  .field input,.field textarea,.field select{
+    width:100%;padding:12px 14px;border-radius:9px;border:1px solid var(--line);
+    font-family:'Inter';font-size:0.94rem;background:var(--white);color:var(--ink);
+  }
+  .field input:focus,.field textarea:focus,.field select:focus{outline:2px solid var(--green);outline-offset:1px;border-color:transparent;}
+  .field textarea{resize:vertical;min-height:100px;}
+  .submit-btn{
+    width:100%;background:var(--navy);color:var(--white);border:none;
+    padding:14px;border-radius:9px;font-weight:600;font-size:0.96rem;cursor:pointer;
+    transition:background .2s;
+  }
+  .submit-btn:hover{background:var(--navy-deep);}
+  .form-note{font-size:0.78rem;color:var(--ink-soft);margin-top:10px;text-align:center;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--navy-deep);color:#B9C9D6;padding:50px 28px 26px;}
+  .foot-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;}
+  .foot-brand{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .foot-brand img{height:32px;width:32px;}
+  .foot-brand span{font-family:'Space Grotesk';font-weight:700;color:var(--white);}
+  footer p{font-size:0.86rem;line-height:1.7;}
+  footer h5{color:var(--white);font-size:0.86rem;margin-bottom:14px;font-family:'IBM Plex Mono';letter-spacing:0.06em;text-transform:uppercase;font-weight:500;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+  footer ul a{font-size:0.88rem;color:#B9C9D6;transition:color .2s;}
+  footer ul a:hover{color:var(--orange);}
+  .foot-bottom{
+    max-width:1160px;margin:40px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,0.1);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:0.8rem;color:#7F92A3;
+  }
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    nav.links{display:none;}
+    .burger{display:block;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{order:-1;}
+    .about-grid{grid-template-columns:1fr;gap:34px;}
+    .service-grid{grid-template-columns:repeat(2,1fr);}
+    .spotlight{grid-template-columns:1fr;padding:36px 26px;}
+    .process-row{grid-template-columns:repeat(2,1fr);gap:30px;}
+    .process-row::before{display:none;}
+    .contact-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:520px){
+    .service-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr;}
+    .orbit-wrap{width:260px;height:260px;}
+    .hero-logo img{width:140px;height:140px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="stream" aria-hidden="true">
+  <div class="stream-dot" style="animation-delay:0s;"></div>
+  <div class="stream-dot" style="animation-delay:2.3s;"></div>
+  <div class="stream-dot" style="animation-delay:4.6s;"></div>
+</div>
+
+<header>
+  <div class="nav">
+    <a href="#top" class="brand">
+      <img src="assets/logo.png" alt="Manyusi Technologies Limited">
+      <span>MANY<b>USI</b></span>
+    </a>
+    <nav class="links">
+      <a href="#kuhusu">Kuhusu Sisi</a>
+      <a href="#huduma">Huduma</a>
+      <a href="#bidhaa">Bidhaa</a>
+      <a href="#mchakato">Mchakato</a>
+      <a href="#wasiliana" class="cta-btn">Wasiliana Nasi</a>
+    </nav>
+    <button class="burger" onclick="document.querySelector('.links').classList.toggle('open-mobile')" aria-label="Fungua menyu">☰</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">// Suluhisho za TEHAMA — Dar es Salaam, Tanzania</div>
+        <h1>Tunajenga <em>mifumo ya kidijitali</em> inayosukuma biashara yako mbele.</h1>
+        <p>Manyusi Technologies Limited ni kampuni ya Kitanzania inayounganisha uundaji wa programu, mitandao, usalama mtandaoni na huduma za wingu kuwa suluhisho moja imara kwa makampuni, taasisi na wajasiriamali.</p>
+        <div class="hero-actions">
+          <a href="#wasiliana" class="btn-primary">Anza Mradi Wako</a>
+          <a href="#huduma" class="btn-ghost">Angalia Huduma Zetu</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="orbit-wrap">
+          <div class="orbit o1"></div>
+          <div class="orbit o2"></div>
+          <div class="orbit o3"></div>
+          <div class="node n2"></div>
+          <div class="node n3"></div>
+          <div class="hero-logo"><img src="assets/logo.png" alt="Alama ya Manyusi Technologies"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="kuhusu">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="eyebrow">Kuhusu Sisi</div>
+        <h2 style="font-family:'Space Grotesk';font-size:clamp(1.6rem,3vw,2.1rem);color:var(--navy-deep);margin:12px 0 18px;">Timu ya wataalamu wa teknolojia iliyojikita Tanzania, ikitazama mbele kikanda.</h2>
+        <p>Manyusi Technologies Limited ilianzishwa kwa lengo moja: kuwezesha biashara na taasisi za Afrika Mashariki kutumia teknolojia kwa ufanisi, usalama na gharama nafuu. Tunachanganya uzoefu wa kimataifa na uelewa wa soko la ndani ili kutoa suluhisho zinazofanya kazi kweli.</p>
+        <p>Kuanzia mfumo wa mauzo kwa duka dogo, hadi mtandao salama wa taasisi kubwa — tunashughulikia mradi wako tangu wazo hadi utekelezaji, na kuendelea kukuhudumia baada ya hapo.</p>
+      </div>
+      <div class="reveal">
+        <div class="stat-row">
+          <div class="stat"><b>8+</b><span>Huduma kuu za TEHAMA</span></div>
+          <div class="stat"><b>100%</b><span>Msisitizo wa soko la Tanzania</span></div>
+          <div class="stat"><b>24/7</b><span>Msaada wa kiufundi</span></div>
+        </div>
+        <div class="stat-row" style="margin-top:18px;">
+          <div class="stat" style="grid-column:span 3;">
+            <b>Dira Yetu</b>
+            <span>Kuwa mshirika wa kiteknolojia unayemtegemea zaidi kwa SME na taasisi za Afrika Mashariki, tukisukuma ukuaji kupitia mifumo thabiti na salama.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="huduma">
+    <div class="section-head reveal">
+      <div class="eyebrow">Huduma Zetu</div>
+      <h2>Kila kitu unachohitaji kudijitisha biashara yako, chini ya paa moja.</h2>
+      <p>Tunatoa huduma nane kuu za teknolojia, zikiwa zimeundwa kufanya kazi pamoja kama mfumo mmoja imara.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card reveal" style="--accent:var(--navy); --accent-bg:rgba(11,61,102,0.08);">
+        <div class="service-icon">💻</div>
+        <h3>Uundaji wa Tovuti na Programu</h3>
+        <p>Tovuti, mifumo ya wavuti na programu za simu zilizoundwa mahsusi kwa mahitaji ya biashara yako.</p>
+      </div>
+      <div class="service-card reveal" style="--accent:var(--green); --accent-bg:rgba(63,165,53,0.1);">
+        <div class="service-icon">🌐</div>
+        <h3>Mitandao (Networking)</h3>
+        <p>Usanifu, usimikaji na uimarishaji wa mitandao ya ofisi, taasisi na majengo ya biashara.</p>
+      </div>
+      <div class="service-card reveal" style="--accent:var(--orange); --accent-bg:rgba(232,114,12,0.1);">
+        <div class="service-icon">🛡️</div>
+        <h3>Usalama Mtandaoni</h3>
+        <p>Ulinzi wa mifumo, taarifa na miundombinu yako dhidi ya vitisho vya kimtandao.</p>
+      </div>
+      <div class="service-card reveal" style="--accent:var(--navy); --accent-bg:rgba(11,61,102,0.08);">
+        <div class="service-icon">☁️</div>
+        <h3>Huduma za Wingu (Cloud)</h3>
+        <p>Uhamishaji na usimamizi wa mifumo yako kwenye mazingira ya wingu yenye uhakika na gharama nafuu.</p>
+      </div>
+      <div class="service-card reveal" style="--accent:var(--green); --accent-bg:rgba(63,165,53,0.1);">
+        <div class="service-icon">🎥</div>
+        <h3>CCTV na Ufuatiliaji</h3>
+        <p>Usimikaji wa kamera za usalama na mifumo ya ufuatiliaji kwa nyumba, ofisi na maghala.</p>
+      </div>
+      <div class="service-card reveal" style="--accent:var(--orange); --accent-bg:rgba(232,114,12,0.1);">
+        <div class="service-icon">🎨</div>
+        <h3>Uchoraji Picha (Graphic Design)</h3>
+        <p>Nembo, chapa na vifaa vya kuona vinavyoifanya biashara yako ikumbukwe.</p>
+      </div>
+      <div class="service-card reveal" style="--accent:var(--navy); --accent-bg:rgba(11,61,102,0.08);">
+        <div class="service-icon">📣</div>
+        <h3>Uuzaji wa Kidijitali</h3>
+        <p>Mikakati ya mitandao ya kijamii, SEO na matangazo yanayokuletea wateja halisi.</p>
+      </div>
+      <div class="service-card reveal" style="--accent:var(--green); --accent-bg:rgba(63,165,53,0.1);">
+        <div class="service-icon">🎓</div>
+        <h3>Mafunzo ya TEHAMA</h3>
+        <p>Mafunzo ya vitendo kwa watu binafsi na timu za kazi kuhusu zana na mifumo ya kidijitali.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT SPOTLIGHT -->
+  <section id="bidhaa">
+    <div class="spotlight reveal">
+      <div>
+        <div class="eyebrow">Bidhaa Yetu Kuu</div>
+        <h2>MTL SmartBiz Suite</h2>
+        <p>Mfumo mmoja unaounganisha mauzo, hesabu, wateja na taarifa za biashara — ulioundwa mahsusi kwa mazingira ya biashara ya Afrika Mashariki.</p>
+        <ul>
+          <li>Usimamizi wa mauzo na hesabu (stock) muda halisi</li>
+          <li>Taarifa za kifedha zinazoeleweka kwa haraka</li>
+          <li>Inafanya kazi vizuri hata kwa mtandao dhaifu</li>
+        </ul>
+        <a href="#wasiliana" class="btn-primary">Omba Onyesho (Demo)</a>
+      </div>
+      <div class="spotlight-card">
+        <div class="tag">Imeundwa kwa SME</div>
+        <h4>Fanya maamuzi kwa taarifa, si kwa kubahatisha.</h4>
+        <p>SmartBiz Suite inakupa picha kamili ya biashara yako popote ulipo — kwenye simu au kompyuta.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="mchakato">
+    <div class="section-head reveal">
+      <div class="eyebrow">Jinsi Tunavyofanya Kazi</div>
+      <h2>Mchakato ulio wazi, kutoka wazo hadi uzinduzi.</h2>
+    </div>
+    <div class="process-row">
+      <div class="p-step reveal"><div class="p-num">01</div><h4>Uelewa wa Mahitaji</h4><p>Tunakutana nawe kuelewa changamoto na malengo ya biashara yako.</p></div>
+      <div class="p-step reveal"><div class="p-num">02</div><h4>Usanifu wa Suluhisho</h4><p>Tunaandaa mpango na muundo unaoendana na bajeti na muda wako.</p></div>
+      <div class="p-step reveal"><div class="p-num">03</div><h4>Utekelezaji</h4><p>Timu yetu inajenga na kujaribu mfumo kabla ya kuukabidhi.</p></div>
+      <div class="p-step reveal"><div class="p-num">04</div><h4>Msaada wa Kudumu</h4><p>Tunaendelea kukuhudumia baada ya uzinduzi, muda wote unapohitaji.</p></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="wasiliana">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="eyebrow">Wasiliana Nasi</div>
+        <h2>Tuambie kuhusu mradi wako.</h2>
+        <p>Jaza fomu au tumia mawasiliano hapa chini — timu yetu itakujibu haraka.</p>
+        <div class="info-line"><div class="ic">📍</div><div><b>Ofisi</b><span>Dar es Salaam, Tanzania</span></div></div>
+        <div class="info-line"><div class="ic">✉️</div><div><b>Barua Pepe</b><span>info@manyusitech.co.tz</span></div></div>
+        <div class="info-line"><div class="ic">📞</div><div><b>Simu / WhatsApp</b><span>+255 6XX XXX XXX</span></div></div>
+        <div class="social-row">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="X">x</a>
+        </div>
+      </div>
+      <form class="reveal" onsubmit="return handleSubmit(event)">
+        <div class="field"><label for="jina">Jina Lako</label><input id="jina" required type="text" placeholder="Andika jina lako"></div>
+        <div class="field"><label for="barua">Barua Pepe</label><input id="barua" required type="email" placeholder="jina@barua.com"></div>
+        <div class="field"><label for="huduma-select">Unahitaji Huduma Gani?</label>
+          <select id="huduma-select">
+            <option>Uundaji wa Tovuti / Programu</option>
+            <option>Mitandao</option>
+            <option>Usalama Mtandaoni</option>
+            <option>Huduma za Wingu</option>
+            <option>CCTV</option>
+            <option>Uchoraji Picha</option>
+            <option>Uuzaji wa Kidijitali</option>
+            <option>Mafunzo ya TEHAMA</option>
+            <option>Nyingine</option>
+          </select>
+        </div>
+        <div class="field"><label for="ujumbe">Ujumbe</label><textarea id="ujumbe" required placeholder="Tuambie kuhusu mradi wako..."></textarea></div>
+        <button class="submit-btn" type="submit">Tuma Ujumbe</button>
+        <p class="form-note">Tutakujibu ndani ya saa 24 za siku za kazi.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand"><img src="assets/logo.png" alt="Manyusi"><span>MANYUSI TECHNOLOGIES LTD</span></div>
+      <p>Mshirika wako wa kiteknolojia — tunageuza changamoto za kidijitali za biashara yako kuwa fursa.</p>
+    </div>
+    <div>
+      <h5>Huduma</h5>
+      <ul>
+        <li><a href="#huduma">Tovuti &amp; Programu</a></li>
+        <li><a href="#huduma">Mitandao</a></li>
+        <li><a href="#huduma">Usalama Mtandaoni</a></li>
+        <li><a href="#huduma">Huduma za Wingu</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Kampuni</h5>
+      <ul>
+        <li><a href="#kuhusu">Kuhusu Sisi</a></li>
+        <li><a href="#bidhaa">SmartBiz Suite</a></li>
+        <li><a href="#mchakato">Mchakato Wetu</a></li>
+        <li><a href="#wasiliana">Wasiliana Nasi</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Mawasiliano</h5>
+      <ul>
+        <li>Dar es Salaam, Tanzania</li>
+        <li>info@manyusitech.co.tz</li>
+        <li>+255 6XX XXX XXX</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© <span id="year"></span> Manyusi Technologies Limited. Haki zote zimehifadhiwa.</span>
+    <span>Imetengenezwa Dar es Salaam 🇹🇿</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function handleSubmit(e){
+    e.preventDefault();
+    const btn = e.target.querySelector('.submit-btn');
+    const original = btn.textContent;
+    btn.textContent = 'Imetumwa ✓';
+    btn.style.background = 'var(--green)';
+    setTimeout(()=>{ btn.textContent = original; btn.style.background = ''; e.target.reset(); }, 2600);
+  }
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
