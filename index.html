@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Manyusi Technologies Limited — Suluhisho za Kiteknolojia Tanzania</title>
 <meta name="description" content="Manyusi Technologies Limited — Kampuni ya Kitanzania inayotoa suluhisho za teknolojia: uundaji wa tovuti na programu, mitandao, usalama mtandaoni, wingu, CCTV, uchoraji picha na mafunzo ya TEHAMA.">
+<meta name="theme-color" content="#0B3D66">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Manyusi Technologies Limited — Suluhisho za Kiteknolojia Tanzania">
+<meta property="og:description" content="Uundaji wa tovuti na programu, mitandao, usalama mtandaoni, wingu, CCTV, uchoraji picha na mafunzo ya TEHAMA — Dar es Salaam, Tanzania.">
+<meta property="og:image" content="assets/logo.png">
+<meta property="og:locale" content="sw_TZ">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Manyusi Technologies Limited">
+<meta name="twitter:description" content="Suluhisho za teknolojia kwa biashara — Dar es Salaam, Tanzania.">
+<meta name="twitter:image" content="assets/logo.png">
 <link rel="icon" href="assets/logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,7 +56,8 @@
     font-weight:500;
   }
   a{color:inherit;text-decoration:none;}
-  img{max-width:100%;display:block;}
+  img,svg{max-width:100%;display:block;}
+  button{font-family:inherit;cursor:pointer;}
   .wrap{max-width:1160px;margin:0 auto;padding:0 28px;}
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
@@ -54,111 +65,66 @@
 
   /* ---------- signature: data stream ---------- */
   .stream{
-    position:absolute;
-    left:50%;
-    top:0;
-    width:2px;
-    height:100%;
+    position:absolute;left:50%;top:0;width:2px;height:100%;
     transform:translateX(-50%);
     background:linear-gradient(180deg,#1E7FD1 0%, var(--green) 45%, var(--orange) 100%);
-    opacity:0.16;
-    z-index:0;
+    opacity:0.16;z-index:0;
   }
   .stream-dot{
-    position:absolute;
-    left:50%;
-    width:8px;height:8px;
-    border-radius:50%;
-    transform:translateX(-50%);
-    background:var(--green);
+    position:absolute;left:50%;width:8px;height:8px;border-radius:50%;
+    transform:translateX(-50%);background:var(--green);
     box-shadow:0 0 12px 2px rgba(63,165,53,0.6);
     animation:travel 7s linear infinite;
   }
-  @keyframes travel{
-    0%{top:-2%;opacity:0;}
-    8%{opacity:1;}
-    92%{opacity:1;}
-    100%{top:102%;opacity:0;}
-  }
+  @keyframes travel{0%{top:-2%;opacity:0;}8%{opacity:1;}92%{opacity:1;}100%{top:102%;opacity:0;}}
 
   /* ---------- header ---------- */
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(246,248,250,0.86);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:14px 28px;
-    max-width:1160px;margin:0 auto;
-  }
+  header{position:sticky;top:0;z-index:60;background:rgba(246,248,250,0.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:1160px;margin:0 auto;position:relative;}
   .brand{display:flex;align-items:center;gap:10px;}
   .brand img{height:38px;width:38px;}
   .brand span{font-family:'Space Grotesk';font-weight:700;font-size:1.05rem;color:var(--navy-deep);}
   .brand b{color:var(--green);}
-  nav.links{display:flex;gap:30px;align-items:center;}
-  nav.links a{font-size:0.92rem;font-weight:500;color:var(--ink-soft);transition:color .2s;}
-  nav.links a:hover{color:var(--navy);}
-  .cta-btn{
-    background:var(--navy);color:var(--white);
-    padding:10px 20px;border-radius:100px;
-    font-weight:600;font-size:0.88rem;
-    transition:transform .2s, background .2s;
-    white-space:nowrap;
-  }
+  nav.links{display:flex;gap:26px;align-items:center;}
+  nav.links a:not(.cta-btn){font-size:0.92rem;font-weight:500;color:var(--ink-soft);transition:color .2s;}
+  nav.links a:not(.cta-btn):hover{color:var(--navy);}
+  .cta-btn{background:var(--navy);color:var(--white);padding:10px 20px;border-radius:100px;font-weight:600;font-size:0.88rem;transition:transform .2s, background .2s;white-space:nowrap;border:none;}
   .cta-btn:hover{background:var(--navy-deep);transform:translateY(-1px);}
-  .burger{display:none;background:none;border:none;font-size:1.5rem;color:var(--navy);cursor:pointer;}
+  .lang-toggle{display:flex;border:1px solid var(--line);border-radius:100px;overflow:hidden;background:var(--white);}
+  .lang-toggle button{background:none;border:none;padding:7px 13px;font-size:0.78rem;font-weight:700;font-family:'IBM Plex Mono';color:var(--ink-soft);transition:background .2s,color .2s;}
+  .lang-toggle button.active{background:var(--navy);color:var(--white);}
+  .burger{display:none;background:none;border:none;font-size:1.4rem;color:var(--navy);padding:4px;}
+  .mobile-panel{
+    display:none;position:absolute;top:100%;left:0;right:0;background:var(--white);
+    border-bottom:1px solid var(--line);box-shadow:0 20px 30px -20px rgba(0,0,0,0.2);
+    flex-direction:column;padding:16px 28px 24px;gap:4px;
+  }
+  .mobile-panel.open{display:flex;}
+  .mobile-panel a{padding:12px 4px;font-weight:600;color:var(--navy-deep);border-bottom:1px solid var(--line);}
+  .mobile-panel a:last-child{border-bottom:none;}
 
   /* ---------- hero ---------- */
-  .hero{
-    position:relative;
-    padding:90px 28px 70px;
-    overflow:hidden;
-  }
-  .hero-grid{
-    max-width:1160px;margin:0 auto;
-    display:grid;grid-template-columns:1.1fr 0.9fr;gap:50px;align-items:center;
-  }
+  .hero{position:relative;padding:90px 28px 70px;overflow:hidden;}
+  .hero-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.1fr 0.9fr;gap:50px;align-items:center;}
   .hero h1{font-size:clamp(2.2rem,4.2vw,3.4rem);color:var(--navy-deep);margin:16px 0 20px;}
   .hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--navy) 0%, var(--green) 55%, var(--orange) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
   .hero p{font-size:1.08rem;color:var(--ink-soft);max-width:520px;margin-bottom:32px;}
   .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
-  .btn-primary{
-    background:var(--green);color:var(--white);
-    padding:14px 26px;border-radius:100px;font-weight:600;
-    transition:transform .2s,box-shadow .2s;
-    box-shadow:0 8px 20px -8px rgba(63,165,53,0.6);
-  }
+  .btn-primary{background:var(--green);color:var(--white);padding:14px 26px;border-radius:100px;font-weight:600;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 20px -8px rgba(63,165,53,0.6);border:none;font-size:0.98rem;}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 24px -8px rgba(63,165,53,0.7);}
-  .btn-ghost{
-    border:1.5px solid var(--line);color:var(--navy-deep);
-    padding:13px 24px;border-radius:100px;font-weight:600;
-    transition:border-color .2s,background .2s;
-  }
+  .btn-ghost{border:1.5px solid var(--line);color:var(--navy-deep);padding:13px 24px;border-radius:100px;font-weight:600;transition:border-color .2s,background .2s;background:none;font-size:0.98rem;}
   .btn-ghost:hover{border-color:var(--navy);background:var(--white);}
 
-  .hero-visual{
-    position:relative;display:flex;align-items:center;justify-content:center;
-  }
+  .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;}
   .orbit-wrap{position:relative;width:340px;height:340px;}
-  .orbit{
-    position:absolute;inset:0;border-radius:50%;
-    border:1.5px dashed rgba(11,61,102,0.18);
-    animation:spin 40s linear infinite;
-  }
+  .orbit{position:absolute;inset:0;border-radius:50%;border:1.5px dashed rgba(11,61,102,0.18);animation:spin 40s linear infinite;}
   .orbit.o2{inset:34px;border-color:rgba(63,165,53,0.22);animation-duration:30s;animation-direction:reverse;}
   .orbit.o3{inset:68px;border-color:rgba(232,114,12,0.22);animation-duration:22s;}
   @keyframes spin{to{transform:rotate(360deg);}}
-  .hero-logo{
-    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  }
-  .hero-logo img{width:190px;height:190px;filter:drop-shadow(0 18px 30px rgba(11,61,102,0.25));}
-  .node{
-    position:absolute;width:12px;height:12px;border-radius:50%;
-    box-shadow:0 0 0 6px rgba(255,255,255,0.6);
-  }
-  .n1{top:6%;left:18%;background:var(--navy);animation:spin 40s linear infinite;transform-origin:170px 164px;}
+  .hero-logo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+  .hero-logo img{width:190px;height:190px;filter:drop-shadow(0 18px 30px rgba(11,61,102,0.25));transition:transform .4s;}
+  .hero-logo:hover img{transform:scale(1.05) rotate(4deg);}
+  .node{position:absolute;width:12px;height:12px;border-radius:50%;box-shadow:0 0 0 6px rgba(255,255,255,0.6);}
   .n2{top:70%;left:82%;background:var(--orange);}
   .n3{top:82%;left:12%;background:var(--green);}
 
@@ -170,42 +136,32 @@
 
   /* ---------- about ---------- */
   .about{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;max-width:1160px;margin:0 auto;}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1160px;margin:0 auto;}
   .about p{color:var(--ink-soft);margin-bottom:16px;font-size:1.02rem;}
   .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px;}
-  .stat{
-    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
-    padding:20px 16px;text-align:left;
-  }
+  .stat{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:20px 16px;text-align:left;transition:transform .2s,border-color .2s;}
+  .stat:hover{transform:translateY(-3px);border-color:var(--green);}
   .stat b{display:block;font-family:'Space Grotesk';font-size:1.7rem;color:var(--navy-deep);}
   .stat span{font-size:0.82rem;color:var(--ink-soft);}
+  .about-art{width:100%;}
 
   /* ---------- services ---------- */
   .services{max-width:1160px;margin:0 auto;}
-  .service-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
-  }
+  .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
   .service-card{
     background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
     padding:26px 22px;transition:transform .25s, box-shadow .25s, border-color .25s;
-    position:relative;overflow:hidden;
+    position:relative;overflow:hidden;text-align:left;width:100%;
   }
-  .service-card::before{
-    content:'';position:absolute;top:0;left:0;width:100%;height:3px;
-    background:var(--accent,var(--navy));
-    transform:scaleX(0);transform-origin:left;transition:transform .3s;
-  }
-  .service-card:hover{transform:translateY(-5px);box-shadow:0 16px 30px -18px rgba(11,61,102,0.3);border-color:transparent;}
-  .service-card:hover::before{transform:scaleX(1);}
-  .service-icon{
-    width:44px;height:44px;border-radius:10px;
-    display:flex;align-items:center;justify-content:center;
-    background:var(--accent-bg,rgba(11,61,102,0.08));
-    color:var(--accent,var(--navy));
-    margin-bottom:16px;font-size:1.3rem;
-  }
+  .service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--accent,var(--navy));transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+  .service-card:hover,.service-card:focus-visible{transform:translateY(-5px);box-shadow:0 16px 30px -18px rgba(11,61,102,0.3);border-color:transparent;outline:none;}
+  .service-card:hover::before,.service-card:focus-visible::before{transform:scaleX(1);}
+  .service-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--accent-bg,rgba(11,61,102,0.08));color:var(--accent,var(--navy));margin-bottom:16px;font-size:1.3rem;}
   .service-card h3{font-size:1.05rem;color:var(--navy-deep);margin-bottom:8px;}
-  .service-card p{font-size:0.9rem;color:var(--ink-soft);}
+  .service-card p{font-size:0.9rem;color:var(--ink-soft);margin-bottom:14px;}
+  .card-more{font-size:0.82rem;font-weight:700;color:var(--accent,var(--navy));display:inline-flex;align-items:center;gap:5px;}
+  .card-more svg{width:13px;height:13px;transition:transform .2s;}
+  .service-card:hover .card-more svg{transform:translateX(3px);}
 
   /* ---------- product spotlight ---------- */
   .spotlight{
@@ -214,42 +170,36 @@
     padding:60px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;
     position:relative;overflow:hidden;
   }
-  .spotlight::after{
-    content:'';position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:50%;
-    background:radial-gradient(circle,rgba(232,114,12,0.35),transparent 70%);
-  }
+  .spotlight::after{content:'';position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(232,114,12,0.35),transparent 70%);}
   .spotlight .eyebrow{color:#8FD1FF;}
   .spotlight h2{font-size:clamp(1.6rem,3vw,2.1rem);margin:12px 0 16px;}
   .spotlight p{color:#CBD9E4;font-size:1rem;margin-bottom:22px;}
   .spotlight ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:26px;}
   .spotlight li{font-size:0.94rem;color:#E6EEF3;padding-left:22px;position:relative;}
   .spotlight li::before{content:'→';position:absolute;left:0;color:var(--orange);font-weight:700;}
-  .spotlight-card{
-    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);
-    border-radius:16px;padding:30px;backdrop-filter:blur(6px);
-  }
-  .spotlight-card .tag{font-family:'IBM Plex Mono';font-size:0.7rem;letter-spacing:0.1em;color:var(--orange);text-transform:uppercase;}
-  .spotlight-card h4{font-size:1.3rem;margin:10px 0 8px;}
-  .spotlight-card p{font-size:0.88rem;color:#C7D5DF;margin-bottom:0;}
+  .spotlight-art{position:relative;}
 
   /* ---------- process ---------- */
   .process{max-width:1160px;margin:0 auto;}
   .process-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
-  .process-row::before{
-    content:'';position:absolute;top:26px;left:8%;right:8%;height:2px;
-    background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 14px);
-  }
+  .process-row::before{content:'';position:absolute;top:26px;left:8%;right:8%;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 14px);}
   .p-step{padding:0 16px;position:relative;}
-  .p-num{
-    width:52px;height:52px;border-radius:50%;background:var(--white);border:2px solid var(--navy);
-    display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:700;
-    color:var(--navy);margin-bottom:18px;position:relative;z-index:1;
-  }
+  .p-num{width:52px;height:52px;border-radius:50%;background:var(--white);border:2px solid var(--navy);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:700;color:var(--navy);margin-bottom:18px;position:relative;z-index:1;}
   .p-step:nth-child(2) .p-num{border-color:var(--green);color:var(--green);}
   .p-step:nth-child(3) .p-num{border-color:var(--orange);color:var(--orange);}
   .p-step:nth-child(4) .p-num{border-color:var(--navy);color:var(--navy);}
   .p-step h4{font-size:1.02rem;color:var(--navy-deep);margin-bottom:8px;}
   .p-step p{font-size:0.88rem;color:var(--ink-soft);}
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:800px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{width:100%;text-align:left;background:none;border:none;padding:20px 4px;display:flex;justify-content:space-between;align-items:center;font-family:'Space Grotesk';font-weight:600;color:var(--navy-deep);font-size:1rem;}
+  .faq-q .plus{font-size:1.4rem;color:var(--green);transition:transform .3s;flex-shrink:0;margin-left:14px;}
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .faq-item.open .faq-a{max-height:220px;}
+  .faq-a p{padding:0 4px 20px;color:var(--ink-soft);font-size:0.94rem;}
 
   /* ---------- contact ---------- */
   .contact{background:var(--white);border-top:1px solid var(--line);}
@@ -257,34 +207,20 @@
   .contact-info h2{font-size:clamp(1.7rem,3vw,2.2rem);color:var(--navy-deep);margin-bottom:16px;}
   .contact-info p{color:var(--ink-soft);margin-bottom:26px;}
   .info-line{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px;}
-  .info-line .ic{
-    width:38px;height:38px;border-radius:9px;background:rgba(63,165,53,0.1);color:var(--green);
-    display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;
-  }
+  .info-line .ic{width:38px;height:38px;border-radius:9px;background:rgba(63,165,53,0.1);color:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;}
   .info-line b{display:block;color:var(--navy-deep);font-size:0.92rem;}
   .info-line span{font-size:0.9rem;color:var(--ink-soft);}
   .social-row{display:flex;gap:12px;margin-top:24px;}
-  .social-row a{
-    width:38px;height:38px;border-radius:50%;border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(--navy);
-    transition:background .2s,color .2s;
-  }
+  .social-row a{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(--navy);transition:background .2s,color .2s;}
   .social-row a:hover{background:var(--navy);color:var(--white);}
 
   form{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px;}
   .field{margin-bottom:16px;}
   .field label{display:block;font-size:0.82rem;font-weight:600;color:var(--navy-deep);margin-bottom:6px;}
-  .field input,.field textarea,.field select{
-    width:100%;padding:12px 14px;border-radius:9px;border:1px solid var(--line);
-    font-family:'Inter';font-size:0.94rem;background:var(--white);color:var(--ink);
-  }
+  .field input,.field textarea,.field select{width:100%;padding:12px 14px;border-radius:9px;border:1px solid var(--line);font-family:'Inter';font-size:0.94rem;background:var(--white);color:var(--ink);}
   .field input:focus,.field textarea:focus,.field select:focus{outline:2px solid var(--green);outline-offset:1px;border-color:transparent;}
   .field textarea{resize:vertical;min-height:100px;}
-  .submit-btn{
-    width:100%;background:var(--navy);color:var(--white);border:none;
-    padding:14px;border-radius:9px;font-weight:600;font-size:0.96rem;cursor:pointer;
-    transition:background .2s;
-  }
+  .submit-btn{width:100%;background:var(--navy);color:var(--white);border:none;padding:14px;border-radius:9px;font-weight:600;font-size:0.96rem;cursor:pointer;transition:background .2s;}
   .submit-btn:hover{background:var(--navy-deep);}
   .form-note{font-size:0.78rem;color:var(--ink-soft);margin-top:10px;text-align:center;}
 
@@ -299,10 +235,128 @@
   footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
   footer ul a{font-size:0.88rem;color:#B9C9D6;transition:color .2s;}
   footer ul a:hover{color:var(--orange);}
-  .foot-bottom{
-    max-width:1160px;margin:40px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,0.1);
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:0.8rem;color:#7F92A3;
+  .foot-bottom{max-width:1160px;margin:40px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:0.8rem;color:#7F92A3;}
+
+  /* ---------- modal ---------- */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(6,41,69,0.55);backdrop-filter:blur(3px);
+    display:flex;align-items:center;justify-content:center;padding:20px;z-index:200;
+    opacity:0;pointer-events:none;transition:opacity .25s ease;
   }
+  .modal-overlay.open{opacity:1;pointer-events:auto;}
+  .modal-box{
+    background:var(--white);border-radius:18px;max-width:560px;width:100%;max-height:86vh;overflow-y:auto;
+    padding:34px;position:relative;transform:translateY(16px) scale(0.98);transition:transform .3s ease;
+    box-shadow:0 40px 80px -20px rgba(6,41,69,0.4);
+  }
+  .modal-overlay.open .modal-box{transform:translateY(0) scale(1);}
+  .modal-close{position:absolute;top:18px;right:18px;background:var(--paper);border:none;width:34px;height:34px;border-radius:50%;font-size:1.1rem;color:var(--ink-soft);transition:background .2s;}
+  .modal-close:hover{background:var(--line);}
+  .modal-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px;}
+  .modal-box h3{font-size:1.4rem;color:var(--navy-deep);margin-bottom:12px;}
+  .modal-box .modal-desc{color:var(--ink-soft);font-size:0.98rem;margin-bottom:20px;}
+  .modal-box .modal-list{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:26px;}
+  .modal-box .modal-list li{font-size:0.92rem;color:var(--ink);padding-left:26px;position:relative;}
+  .modal-box .modal-list li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700;}
+  .modal-cta{display:inline-flex;background:var(--green);color:var(--white);padding:13px 24px;border-radius:100px;font-weight:600;font-size:0.92rem;}
+
+  /* ---------- hero photo panel ---------- */
+  .hero-photo{position:absolute;width:100%;max-width:420px;aspect-ratio:1/1;border-radius:32px;overflow:hidden;left:50%;top:50%;transform:translate(-50%,-50%);z-index:0;}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(6,41,69,0.6) 0%,rgba(63,165,53,0.28) 55%,rgba(232,114,12,0.4) 100%);}
+
+  /* ---------- about photo frame ---------- */
+  .photo-frame-outer{padding:6px;border-radius:22px;background:linear-gradient(135deg,var(--navy),var(--green),var(--orange));position:relative;}
+  .photo-frame{border-radius:16px;overflow:hidden;position:relative;}
+  .photo-frame img{width:100%;height:360px;object-fit:cover;display:block;}
+  .photo-badge{
+    position:absolute;bottom:16px;left:16px;background:rgba(6,41,69,0.75);backdrop-filter:blur(4px);
+    color:#fff;padding:8px 14px;border-radius:100px;font-size:0.78rem;font-weight:600;
+    display:flex;align-items:center;gap:6px;
+  }
+
+  /* ---------- image banner sections (TZ strip / final CTA) ---------- */
+  .img-banner{position:relative;padding:90px 28px;overflow:hidden;color:#fff;text-align:center;}
+  .img-banner .banner-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+  .img-banner .banner-overlay{position:absolute;inset:0;z-index:1;}
+  .tz-strip .banner-overlay{background:linear-gradient(120deg,rgba(6,41,69,0.92),rgba(11,61,102,0.8) 55%,rgba(232,114,12,0.55));}
+  .final-cta .banner-overlay{background:linear-gradient(180deg,rgba(6,20,35,0.88),rgba(6,41,69,0.9));}
+  .banner-content{position:relative;z-index:2;max-width:680px;margin:0 auto;}
+  .banner-content .eyebrow{color:#8FD1FF;}
+  .banner-content h2{color:#fff;font-size:clamp(1.6rem,3vw,2.2rem);margin:12px 0 14px;}
+  .banner-content p{color:#E1EAF1;font-size:1.02rem;margin-bottom:6px;}
+  .final-cta .hero-actions{justify-content:center;margin-top:24px;}
+  .final-cta .btn-ghost{color:#fff;border-color:rgba(255,255,255,0.35);}
+  .final-cta .btn-ghost:hover{background:rgba(255,255,255,0.1);}
+
+  /* ---------- why us ---------- */
+  .why-us{max-width:1160px;margin:0 auto;}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .why-card{text-align:center;padding:8px;}
+  .why-icon{width:58px;height:58px;border-radius:16px;background:rgba(11,61,102,0.08);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 16px;}
+  .why-card:nth-child(2) .why-icon{background:rgba(63,165,53,0.1);}
+  .why-card:nth-child(3) .why-icon{background:rgba(232,114,12,0.1);}
+  .why-card:nth-child(4) .why-icon{background:rgba(11,61,102,0.08);}
+  .why-card h4{font-size:1rem;color:var(--navy-deep);margin-bottom:8px;}
+  .why-card p{font-size:0.88rem;color:var(--ink-soft);}
+
+  /* ---------- newsletter ---------- */
+  .news-form{display:flex;margin-top:16px;max-width:280px;}
+  .news-form input{flex:1;padding:10px 12px;border-radius:8px 0 0 8px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.07);color:#fff;font-size:0.85rem;}
+  .news-form input::placeholder{color:#8397A6;}
+  .news-form input:focus{outline:none;background:rgba(255,255,255,0.12);}
+  .news-form button{padding:0 16px;border-radius:0 8px 8px 0;background:var(--green);border:none;color:#fff;font-weight:700;font-size:0.95rem;}
+  .news-note{font-size:0.78rem;color:#7F92A3;margin-top:8px;}
+
+  /* ---------- progress bar ---------- */
+  .progress-bar{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--navy),var(--green),var(--orange));z-index:100;transition:width .1s linear;}
+
+  /* ---------- floating buttons ---------- */
+  .float-stack{position:fixed;right:22px;bottom:22px;display:flex;flex-direction:column;gap:12px;z-index:90;align-items:flex-end;}
+  .whatsapp-float{
+    width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -6px rgba(37,211,102,0.6);
+    position:relative;transition:transform .2s;
+  }
+  .whatsapp-float:hover{transform:scale(1.07);}
+  .whatsapp-float::before{
+    content:'';position:absolute;inset:0;border-radius:50%;background:#25D366;opacity:0.55;
+    animation:pulse-wa 2.2s ease-out infinite;z-index:-1;
+  }
+  @keyframes pulse-wa{0%{transform:scale(1);opacity:0.55;}100%{transform:scale(1.7);opacity:0;}}
+  .whatsapp-float svg{width:28px;height:28px;}
+  .back-to-top{
+    width:44px;height:44px;border-radius:50%;background:var(--white);border:1px solid var(--line);color:var(--navy);
+    display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px -8px rgba(11,61,102,0.3);
+    opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .25s,transform .25s;
+  }
+  .back-to-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+  .back-to-top:hover{background:var(--navy);color:var(--white);}
+  .back-to-top svg{width:18px;height:18px;}
+
+  /* ---------- pricing ---------- */
+  .pricing{max-width:1160px;margin:0 auto;}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch;}
+  .price-card{
+    background:var(--white);border:1px solid var(--line);border-radius:18px;padding:32px 26px;
+    display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;
+  }
+  .price-card:hover{transform:translateY(-6px);box-shadow:0 20px 34px -20px rgba(11,61,102,0.3);}
+  .price-card.featured{border-color:var(--navy);background:linear-gradient(180deg,#fff 0%,#F2F7FC 100%);}
+  .price-badge{
+    position:absolute;top:-13px;left:26px;background:var(--orange);color:#fff;font-size:0.7rem;font-weight:700;
+    padding:5px 14px;border-radius:100px;font-family:'IBM Plex Mono';letter-spacing:0.05em;text-transform:uppercase;
+  }
+  .price-card h3{font-size:1.15rem;color:var(--navy-deep);margin-bottom:6px;}
+  .price-card .price-sub{font-size:0.88rem;color:var(--ink-soft);margin-bottom:20px;min-height:40px;}
+  .price-card ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:24px;flex-grow:1;}
+  .price-card li{font-size:0.9rem;color:var(--ink);padding-left:24px;position:relative;}
+  .price-card li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700;}
+  .price-card .btn-ghost,.price-card .btn-primary{width:100%;text-align:center;}
+
+  /* ---------- map ---------- */
+  .map-wrap{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);margin-top:24px;height:220px;}
+  .map-wrap iframe{width:100%;height:100%;border:0;display:block;}
 
   /* reveal on scroll */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
@@ -315,22 +369,43 @@
     .hero-grid{grid-template-columns:1fr;}
     .hero-visual{order:-1;}
     .about-grid{grid-template-columns:1fr;gap:34px;}
+    .about-art{order:-1;max-width:280px;margin:0 auto;}
     .service-grid{grid-template-columns:repeat(2,1fr);}
     .spotlight{grid-template-columns:1fr;padding:36px 26px;}
+    .spotlight-art{max-width:220px;margin:0 auto;}
     .process-row{grid-template-columns:repeat(2,1fr);gap:30px;}
     .process-row::before{display:none;}
     .contact-grid{grid-template-columns:1fr;}
     .foot-grid{grid-template-columns:1fr 1fr;}
+    .price-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+    .hero-photo{max-width:280px;}
+    .photo-frame img{height:280px;}
   }
   @media (max-width:520px){
     .service-grid{grid-template-columns:1fr;}
     .foot-grid{grid-template-columns:1fr;}
     .orbit-wrap{width:260px;height:260px;}
     .hero-logo img{width:140px;height:140px;}
+    .modal-box{padding:26px;}
+    .float-stack{right:14px;bottom:14px;}
+    .whatsapp-float{width:50px;height:50px;}
+    .whatsapp-float svg{width:24px;height:24px;}
   }
 </style>
 </head>
 <body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="float-stack">
+  <button class="back-to-top" id="backToTop" aria-label="Rudi juu" title="Rudi juu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+  <a class="whatsapp-float" id="whatsappFloat" href="https://wa.me/255629115986" target="_blank" rel="noopener" aria-label="Wasiliana kwa WhatsApp" title="Wasiliana kwa WhatsApp">
+    <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.02 3C9.4 3 4 8.38 4 15c0 2.34.64 4.53 1.76 6.4L3.6 29l7.79-2.1A12.9 12.9 0 0 0 16.02 27C22.64 27 28 21.62 28 15S22.64 3 16.02 3zm0 22.1c-2.05 0-3.98-.55-5.63-1.5l-.4-.24-4.63 1.25 1.24-4.51-.26-.46A9.96 9.96 0 0 1 5.9 15c0-5.6 4.55-10.13 10.12-10.13S26.14 9.4 26.14 15 21.6 25.1 16.02 25.1zm5.55-7.53c-.3-.15-1.79-.88-2.07-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.96 1.18-.18.2-.35.22-.65.07-.3-.15-1.28-.47-2.44-1.5-.9-.8-1.51-1.79-1.69-2.09-.18-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.64-.93-2.24-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.53.07-.8.38-.28.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.23 5.13 4.53.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.79-.73 2.04-1.44.25-.7.25-1.31.18-1.44-.07-.13-.27-.2-.57-.35z"/></svg>
+  </a>
+</div>
 
 <div class="stream" aria-hidden="true">
   <div class="stream-dot" style="animation-delay:0s;"></div>
@@ -345,13 +420,32 @@
       <span>MANY<b>USI</b></span>
     </a>
     <nav class="links">
-      <a href="#kuhusu">Kuhusu Sisi</a>
-      <a href="#huduma">Huduma</a>
-      <a href="#bidhaa">Bidhaa</a>
-      <a href="#mchakato">Mchakato</a>
-      <a href="#wasiliana" class="cta-btn">Wasiliana Nasi</a>
+      <a href="#kuhusu" data-i18n="nav.about">Kuhusu Sisi</a>
+      <a href="#huduma" data-i18n="nav.services">Huduma</a>
+      <a href="#bei" data-i18n="nav.pricing">Vifurushi</a>
+      <a href="#bidhaa" data-i18n="nav.product">Bidhaa</a>
+      <a href="#maswali" data-i18n="nav.faq">Maswali</a>
+      <div class="lang-toggle" role="group" aria-label="Language toggle">
+        <button type="button" data-lang="sw" class="active">SW</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a href="#wasiliana" class="cta-btn" data-i18n="nav.contact">Wasiliana Nasi</a>
     </nav>
-    <button class="burger" onclick="document.querySelector('.links').classList.toggle('open-mobile')" aria-label="Fungua menyu">☰</button>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button class="burger" id="burgerBtn" aria-label="Fungua menyu" aria-expanded="false">☰</button>
+    </div>
+    <div class="mobile-panel" id="mobilePanel">
+      <a href="#kuhusu" data-i18n="nav.about">Kuhusu Sisi</a>
+      <a href="#huduma" data-i18n="nav.services">Huduma</a>
+      <a href="#bei" data-i18n="nav.pricing">Vifurushi</a>
+      <a href="#bidhaa" data-i18n="nav.product">Bidhaa</a>
+      <a href="#maswali" data-i18n="nav.faq">Maswali</a>
+      <a href="#wasiliana" data-i18n="nav.contact">Wasiliana Nasi</a>
+      <div class="lang-toggle" role="group" aria-label="Language toggle mobile" style="margin-top:10px;align-self:flex-start;">
+        <button type="button" data-lang="sw" class="active">SW</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -361,22 +455,25 @@
   <section class="hero">
     <div class="hero-grid">
       <div>
-        <div class="eyebrow">// Suluhisho za TEHAMA — Dar es Salaam, Tanzania</div>
-        <h1>Tunajenga <em>mifumo ya kidijitali</em> inayosukuma biashara yako mbele.</h1>
-        <p>Manyusi Technologies Limited ni kampuni ya Kitanzania inayounganisha uundaji wa programu, mitandao, usalama mtandaoni na huduma za wingu kuwa suluhisho moja imara kwa makampuni, taasisi na wajasiriamali.</p>
+        <div class="eyebrow" data-i18n="hero.eyebrow">// Suluhisho za TEHAMA — Dar es Salaam, Tanzania</div>
+        <h1 data-i18n-html="hero.title">Tunajenga <em>mifumo ya kidijitali</em> inayosukuma biashara yako mbele.</h1>
+        <p data-i18n="hero.desc">Manyusi Technologies Limited ni kampuni ya Kitanzania inayounganisha uundaji wa programu, mitandao, usalama mtandaoni na huduma za wingu kuwa suluhisho moja imara kwa makampuni, taasisi na wajasiriamali.</p>
         <div class="hero-actions">
-          <a href="#wasiliana" class="btn-primary">Anza Mradi Wako</a>
-          <a href="#huduma" class="btn-ghost">Angalia Huduma Zetu</a>
+          <a href="#wasiliana" class="btn-primary" data-i18n="hero.cta1">Anza Mradi Wako</a>
+          <a href="#huduma" class="btn-ghost" data-i18n="hero.cta2">Angalia Huduma Zetu</a>
         </div>
       </div>
       <div class="hero-visual">
+        <div class="hero-photo">
+          <img src="https://images.unsplash.com/photo-1568625502763-2a5ec6a94c47?fm=jpg&q=70&w=1200&auto=format&fit=crop" alt="Jiji la Dar es Salaam wakati wa alfajiri" loading="lazy">
+        </div>
         <div class="orbit-wrap">
           <div class="orbit o1"></div>
           <div class="orbit o2"></div>
           <div class="orbit o3"></div>
           <div class="node n2"></div>
           <div class="node n3"></div>
-          <div class="hero-logo"><img src="assets/logo.png" alt="Alama ya Manyusi Technologies"></div>
+          <a href="#huduma" class="hero-logo" title="Angalia huduma"><img src="assets/logo.png" alt="Alama ya Manyusi Technologies"></a>
         </div>
       </div>
     </div>
@@ -386,111 +483,144 @@
   <section class="about" id="kuhusu">
     <div class="about-grid">
       <div class="reveal">
-        <div class="eyebrow">Kuhusu Sisi</div>
-        <h2 style="font-family:'Space Grotesk';font-size:clamp(1.6rem,3vw,2.1rem);color:var(--navy-deep);margin:12px 0 18px;">Timu ya wataalamu wa teknolojia iliyojikita Tanzania, ikitazama mbele kikanda.</h2>
-        <p>Manyusi Technologies Limited ilianzishwa kwa lengo moja: kuwezesha biashara na taasisi za Afrika Mashariki kutumia teknolojia kwa ufanisi, usalama na gharama nafuu. Tunachanganya uzoefu wa kimataifa na uelewa wa soko la ndani ili kutoa suluhisho zinazofanya kazi kweli.</p>
-        <p>Kuanzia mfumo wa mauzo kwa duka dogo, hadi mtandao salama wa taasisi kubwa — tunashughulikia mradi wako tangu wazo hadi utekelezaji, na kuendelea kukuhudumia baada ya hapo.</p>
-      </div>
-      <div class="reveal">
+        <div class="eyebrow" data-i18n="about.eyebrow">Kuhusu Sisi</div>
+        <h2 style="font-family:'Space Grotesk';font-size:clamp(1.6rem,3vw,2.1rem);color:var(--navy-deep);margin:12px 0 18px;" data-i18n="about.title">Timu ya wataalamu wa teknolojia iliyojikita Tanzania, ikitazama mbele kikanda.</h2>
+        <p data-i18n="about.p1">Manyusi Technologies Limited ilianzishwa kwa lengo moja: kuwezesha biashara na taasisi za Afrika Mashariki kutumia teknolojia kwa ufanisi, usalama na gharama nafuu. Tunachanganya uzoefu wa kimataifa na uelewa wa soko la ndani ili kutoa suluhisho zinazofanya kazi kweli.</p>
+        <p data-i18n="about.p2">Kuanzia mfumo wa mauzo kwa duka dogo, hadi mtandao salama wa taasisi kubwa — tunashughulikia mradi wako tangu wazo hadi utekelezaji, na kuendelea kukuhudumia baada ya hapo.</p>
         <div class="stat-row">
-          <div class="stat"><b>8+</b><span>Huduma kuu za TEHAMA</span></div>
-          <div class="stat"><b>100%</b><span>Msisitizo wa soko la Tanzania</span></div>
-          <div class="stat"><b>24/7</b><span>Msaada wa kiufundi</span></div>
+          <div class="stat"><b data-count="8">0</b><span data-i18n="about.stat1">Huduma kuu za TEHAMA</span></div>
+          <div class="stat"><b data-count="100" data-suffix="%">0</b><span data-i18n="about.stat2">Msisitizo wa soko la Tanzania</span></div>
+          <div class="stat"><b data-static="24/7">24/7</b><span data-i18n="about.stat3">Msaada wa kiufundi</span></div>
         </div>
-        <div class="stat-row" style="margin-top:18px;">
-          <div class="stat" style="grid-column:span 3;">
-            <b>Dira Yetu</b>
-            <span>Kuwa mshirika wa kiteknolojia unayemtegemea zaidi kwa SME na taasisi za Afrika Mashariki, tukisukuma ukuaji kupitia mifumo thabiti na salama.</span>
+      </div>
+      <div class="reveal about-art">
+        <div class="photo-frame-outer">
+          <div class="photo-frame">
+            <img src="https://images.unsplash.com/photo-1758873269276-9518d0cb4a0b?fm=jpg&q=70&w=1200&auto=format&fit=crop" alt="Timu ikishirikiana kwenye mradi wa kidijitali" loading="lazy">
+            <span class="photo-badge">🇹🇿 Dar es Salaam</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- TANZANIA STRIP -->
+  <section class="img-banner tz-strip">
+    <img class="banner-bg" src="https://images.unsplash.com/photo-1678182451047-196f22a4143e?fm=jpg&q=65&w=1600&auto=format&fit=crop" alt="Bandari ya Dar es Salaam" loading="lazy">
+    <div class="banner-overlay"></div>
+    <div class="banner-content reveal">
+      <div class="eyebrow" data-i18n="tz.eyebrow">Kutoka Dar es Salaam, Kwenda Taifa Zima</div>
+      <h2 data-i18n="tz.title">Tunahudumia wateja kote Tanzania.</h2>
+      <p data-i18n="tz.desc">Ofisi yetu kuu ipo Dar es Salaam, lakini huduma zetu za wavuti, wingu na mifumo ya kidijitali zinawafikia wateja popote nchini — na nje ya mipaka ya Tanzania.</p>
+    </div>
+  </section>
+
   <!-- SERVICES -->
   <section class="services" id="huduma">
     <div class="section-head reveal">
-      <div class="eyebrow">Huduma Zetu</div>
-      <h2>Kila kitu unachohitaji kudijitisha biashara yako, chini ya paa moja.</h2>
-      <p>Tunatoa huduma nane kuu za teknolojia, zikiwa zimeundwa kufanya kazi pamoja kama mfumo mmoja imara.</p>
+      <div class="eyebrow" data-i18n="services.eyebrow">Huduma Zetu</div>
+      <h2 data-i18n="services.title">Kila kitu unachohitaji kudijitisha biashara yako, chini ya paa moja.</h2>
+      <p data-i18n="services.desc">Tunatoa huduma nane kuu za teknolojia. Bonyeza kadi yoyote kuona maelezo zaidi.</p>
     </div>
-    <div class="service-grid">
-      <div class="service-card reveal" style="--accent:var(--navy); --accent-bg:rgba(11,61,102,0.08);">
-        <div class="service-icon">💻</div>
-        <h3>Uundaji wa Tovuti na Programu</h3>
-        <p>Tovuti, mifumo ya wavuti na programu za simu zilizoundwa mahsusi kwa mahitaji ya biashara yako.</p>
-      </div>
-      <div class="service-card reveal" style="--accent:var(--green); --accent-bg:rgba(63,165,53,0.1);">
-        <div class="service-icon">🌐</div>
-        <h3>Mitandao (Networking)</h3>
-        <p>Usanifu, usimikaji na uimarishaji wa mitandao ya ofisi, taasisi na majengo ya biashara.</p>
-      </div>
-      <div class="service-card reveal" style="--accent:var(--orange); --accent-bg:rgba(232,114,12,0.1);">
-        <div class="service-icon">🛡️</div>
-        <h3>Usalama Mtandaoni</h3>
-        <p>Ulinzi wa mifumo, taarifa na miundombinu yako dhidi ya vitisho vya kimtandao.</p>
-      </div>
-      <div class="service-card reveal" style="--accent:var(--navy); --accent-bg:rgba(11,61,102,0.08);">
-        <div class="service-icon">☁️</div>
-        <h3>Huduma za Wingu (Cloud)</h3>
-        <p>Uhamishaji na usimamizi wa mifumo yako kwenye mazingira ya wingu yenye uhakika na gharama nafuu.</p>
-      </div>
-      <div class="service-card reveal" style="--accent:var(--green); --accent-bg:rgba(63,165,53,0.1);">
-        <div class="service-icon">🎥</div>
-        <h3>CCTV na Ufuatiliaji</h3>
-        <p>Usimikaji wa kamera za usalama na mifumo ya ufuatiliaji kwa nyumba, ofisi na maghala.</p>
-      </div>
-      <div class="service-card reveal" style="--accent:var(--orange); --accent-bg:rgba(232,114,12,0.1);">
-        <div class="service-icon">🎨</div>
-        <h3>Uchoraji Picha (Graphic Design)</h3>
-        <p>Nembo, chapa na vifaa vya kuona vinavyoifanya biashara yako ikumbukwe.</p>
-      </div>
-      <div class="service-card reveal" style="--accent:var(--navy); --accent-bg:rgba(11,61,102,0.08);">
-        <div class="service-icon">📣</div>
-        <h3>Uuzaji wa Kidijitali</h3>
-        <p>Mikakati ya mitandao ya kijamii, SEO na matangazo yanayokuletea wateja halisi.</p>
-      </div>
-      <div class="service-card reveal" style="--accent:var(--green); --accent-bg:rgba(63,165,53,0.1);">
-        <div class="service-icon">🎓</div>
-        <h3>Mafunzo ya TEHAMA</h3>
-        <p>Mafunzo ya vitendo kwa watu binafsi na timu za kazi kuhusu zana na mifumo ya kidijitali.</p>
-      </div>
-    </div>
+    <div class="service-grid" id="serviceGrid"></div>
   </section>
 
   <!-- PRODUCT SPOTLIGHT -->
   <section id="bidhaa">
     <div class="spotlight reveal">
       <div>
-        <div class="eyebrow">Bidhaa Yetu Kuu</div>
+        <div class="eyebrow" data-i18n="product.eyebrow">Bidhaa Yetu Kuu</div>
         <h2>MTL SmartBiz Suite</h2>
-        <p>Mfumo mmoja unaounganisha mauzo, hesabu, wateja na taarifa za biashara — ulioundwa mahsusi kwa mazingira ya biashara ya Afrika Mashariki.</p>
+        <p data-i18n="product.desc">Mfumo mmoja unaounganisha mauzo, hesabu, wateja na taarifa za biashara — ulioundwa mahsusi kwa mazingira ya biashara ya Afrika Mashariki.</p>
         <ul>
-          <li>Usimamizi wa mauzo na hesabu (stock) muda halisi</li>
-          <li>Taarifa za kifedha zinazoeleweka kwa haraka</li>
-          <li>Inafanya kazi vizuri hata kwa mtandao dhaifu</li>
+          <li data-i18n="product.li1">Usimamizi wa mauzo na hesabu (stock) muda halisi</li>
+          <li data-i18n="product.li2">Taarifa za kifedha zinazoeleweka kwa haraka</li>
+          <li data-i18n="product.li3">Inafanya kazi vizuri hata kwa mtandao dhaifu</li>
         </ul>
-        <a href="#wasiliana" class="btn-primary">Omba Onyesho (Demo)</a>
+        <a href="#wasiliana" class="btn-primary" data-i18n="product.cta">Omba Onyesho (Demo)</a>
       </div>
-      <div class="spotlight-card">
-        <div class="tag">Imeundwa kwa SME</div>
-        <h4>Fanya maamuzi kwa taarifa, si kwa kubahatisha.</h4>
-        <p>SmartBiz Suite inakupa picha kamili ya biashara yako popote ulipo — kwenye simu au kompyuta.</p>
+      <div class="spotlight-art">
+        <svg viewBox="0 0 300 260" role="img" aria-label="Kielelezo cha dashibodi ya SmartBiz Suite">
+          <rect x="4" y="4" width="292" height="252" rx="16" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.25)"/>
+          <rect x="24" y="26" width="252" height="34" rx="8" fill="rgba(255,255,255,0.14)"/>
+          <circle cx="42" cy="43" r="5" fill="#E8720C"/>
+          <circle cx="60" cy="43" r="5" fill="#3FA535"/>
+          <circle cx="78" cy="43" r="5" fill="#8FD1FF"/>
+          <rect x="24" y="76" width="118" height="70" rx="10" fill="rgba(255,255,255,0.12)"/>
+          <polyline points="34,130 55,110 72,120 95,90 130,100" fill="none" stroke="#3FA535" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="154" y="76" width="122" height="70" rx="10" fill="rgba(255,255,255,0.12)"/>
+          <rect x="166" y="118" width="14" height="20" fill="#E8720C"/>
+          <rect x="188" y="104" width="14" height="34" fill="#8FD1FF"/>
+          <rect x="210" y="94" width="14" height="44" fill="#3FA535"/>
+          <rect x="232" y="112" width="14" height="26" fill="#E8720C"/>
+          <rect x="24" y="160" width="252" height="76" rx="10" fill="rgba(255,255,255,0.12)"/>
+          <rect x="40" y="176" width="140" height="10" rx="5" fill="rgba(255,255,255,0.4)"/>
+          <rect x="40" y="196" width="90" height="10" rx="5" fill="rgba(255,255,255,0.25)"/>
+          <rect x="200" y="180" width="56" height="24" rx="6" fill="#3FA535"/>
+        </svg>
       </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="bei">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="pricing.eyebrow">Vifurushi</div>
+      <h2 data-i18n="pricing.title">Chagua kifurushi kinachoendana na hatua ya biashara yako.</h2>
+      <p data-i18n="pricing.desc">Kila mradi ni tofauti — vifurushi hivi ni mwongozo. Tutakupa bei kamili baada ya kuelewa mahitaji yako.</p>
+    </div>
+    <div class="price-grid" id="priceGrid"></div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-us">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="why.eyebrow">Kwa Nini Utuchague</div>
+      <h2 data-i18n="why.title">Sababu wateja wanaendelea kutuamini.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="why-icon">🇹🇿</div><h4 data-i18n="why.1t">Timu ya Ndani</h4><p data-i18n="why.1p">Tunaelewa soko, lugha na changamoto za biashara za Kitanzania.</p></div>
+      <div class="why-card reveal"><div class="why-icon">⚡</div><h4 data-i18n="why.2t">Utekelezaji wa Haraka</h4><p data-i18n="why.2p">Miradi inaanza haraka na inafuata muda uliopangwa.</p></div>
+      <div class="why-card reveal"><div class="why-icon">🔧</div><h4 data-i18n="why.3t">Msaada wa Kudumu</h4><p data-i18n="why.3p">Hatuishii kuzindua — tunaendelea kukusaidia baadaye.</p></div>
+      <div class="why-card reveal"><div class="why-icon">💬</div><h4 data-i18n="why.4t">Mawasiliano Wazi</h4><p data-i18n="why.4p">Utajua hatua ya mradi wako kila wakati, bila kutatanisha.</p></div>
     </div>
   </section>
 
   <!-- PROCESS -->
   <section class="process" id="mchakato">
     <div class="section-head reveal">
-      <div class="eyebrow">Jinsi Tunavyofanya Kazi</div>
-      <h2>Mchakato ulio wazi, kutoka wazo hadi uzinduzi.</h2>
+      <div class="eyebrow" data-i18n="process.eyebrow">Jinsi Tunavyofanya Kazi</div>
+      <h2 data-i18n="process.title">Mchakato ulio wazi, kutoka wazo hadi uzinduzi.</h2>
     </div>
     <div class="process-row">
-      <div class="p-step reveal"><div class="p-num">01</div><h4>Uelewa wa Mahitaji</h4><p>Tunakutana nawe kuelewa changamoto na malengo ya biashara yako.</p></div>
-      <div class="p-step reveal"><div class="p-num">02</div><h4>Usanifu wa Suluhisho</h4><p>Tunaandaa mpango na muundo unaoendana na bajeti na muda wako.</p></div>
-      <div class="p-step reveal"><div class="p-num">03</div><h4>Utekelezaji</h4><p>Timu yetu inajenga na kujaribu mfumo kabla ya kuukabidhi.</p></div>
-      <div class="p-step reveal"><div class="p-num">04</div><h4>Msaada wa Kudumu</h4><p>Tunaendelea kukuhudumia baada ya uzinduzi, muda wote unapohitaji.</p></div>
+      <div class="p-step reveal"><div class="p-num">01</div><h4 data-i18n="process.s1t">Uelewa wa Mahitaji</h4><p data-i18n="process.s1p">Tunakutana nawe kuelewa changamoto na malengo ya biashara yako.</p></div>
+      <div class="p-step reveal"><div class="p-num">02</div><h4 data-i18n="process.s2t">Usanifu wa Suluhisho</h4><p data-i18n="process.s2p">Tunaandaa mpango na muundo unaoendana na bajeti na muda wako.</p></div>
+      <div class="p-step reveal"><div class="p-num">03</div><h4 data-i18n="process.s3t">Utekelezaji</h4><p data-i18n="process.s3p">Timu yetu inajenga na kujaribu mfumo kabla ya kuukabidhi.</p></div>
+      <div class="p-step reveal"><div class="p-num">04</div><h4 data-i18n="process.s4t">Msaada wa Kudumu</h4><p data-i18n="process.s4p">Tunaendelea kukuhudumia baada ya uzinduzi, muda wote unapohitaji.</p></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="maswali">
+    <div class="section-head reveal" style="max-width:800px;">
+      <div class="eyebrow" data-i18n="faq.eyebrow">Maswali Yanayoulizwa Mara kwa Mara</div>
+      <h2 data-i18n="faq.title">Bado una maswali? Hapa kuna majibu ya haraka.</h2>
+    </div>
+    <div id="faqList"></div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="img-banner final-cta">
+    <img class="banner-bg" src="https://images.unsplash.com/photo-1754039984985-ef607d80113a?fm=jpg&q=65&w=1600&auto=format&fit=crop" alt="Programu ikiendeshwa kwenye skrini" loading="lazy">
+    <div class="banner-overlay"></div>
+    <div class="banner-content reveal">
+      <div class="eyebrow" data-i18n="fcta.eyebrow">Hatua Inayofuata</div>
+      <h2 data-i18n="fcta.title">Uko tayari kuanza mradi wako?</h2>
+      <p data-i18n="fcta.desc">Tuandikie leo, tupate kukuelewa, na tukupe mpango wa kazi ndani ya siku 2.</p>
+      <div class="hero-actions">
+        <a href="#wasiliana" class="btn-primary" data-i18n="fcta.cta1">Tuma Ujumbe</a>
+        <a href="https://wa.me/255629115986" target="_blank" rel="noopener" class="btn-ghost" data-i18n="fcta.cta2">Chat WhatsApp</a>
+      </div>
     </div>
   </section>
 
@@ -498,37 +628,31 @@
   <section class="contact" id="wasiliana">
     <div class="contact-grid">
       <div class="contact-info reveal">
-        <div class="eyebrow">Wasiliana Nasi</div>
-        <h2>Tuambie kuhusu mradi wako.</h2>
-        <p>Jaza fomu au tumia mawasiliano hapa chini — timu yetu itakujibu haraka.</p>
-        <div class="info-line"><div class="ic">📍</div><div><b>Ofisi</b><span>Dar es Salaam, Tanzania</span></div></div>
-        <div class="info-line"><div class="ic">✉️</div><div><b>Barua Pepe</b><span>info@manyusitech.co.tz</span></div></div>
-        <div class="info-line"><div class="ic">📞</div><div><b>Simu / WhatsApp</b><span>+255 629 114 986</span></div></div>
+        <div class="eyebrow" data-i18n="contact.eyebrow">Wasiliana Nasi</div>
+        <h2 data-i18n="contact.title">Tuambie kuhusu mradi wako.</h2>
+        <p data-i18n="contact.desc">Jaza fomu au tumia mawasiliano hapa chini — timu yetu itakujibu haraka.</p>
+        <div class="info-line"><div class="ic">📍</div><div><b data-i18n="contact.officeLabel">Ofisi</b><span data-i18n="contact.officeValue">Dar es Salaam, Tanzania</span></div></div>
+        <div class="info-line"><div class="ic">✉️</div><div><b data-i18n="contact.emailLabel">Barua Pepe</b><span><a href="mailto:info@manyusitech.co.tz" style="color:var(--ink-soft);">info@manyusitech.co.tz</a></span></div></div>
+        <div class="info-line"><div class="ic">📞</div><div><b data-i18n="contact.phoneLabel">Simu / WhatsApp</b><span><a href="tel:+255629115986" style="color:var(--ink-soft);">+255 629 115 986</a></span></div></div>
+        <div class="map-wrap">
+          <iframe src="https://www.google.com/maps?q=Dar%20es%20Salaam,%20Tanzania&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ramani ya Dar es Salaam"></iframe>
+        </div>
         <div class="social-row">
+          <a href="https://wa.me/255629115986" target="_blank" rel="noopener" aria-label="WhatsApp">wa</a>
           <a href="#" aria-label="LinkedIn">in</a>
           <a href="#" aria-label="Instagram">ig</a>
           <a href="#" aria-label="X">x</a>
         </div>
       </div>
-      <form class="reveal" onsubmit="return handleSubmit(event)">
-        <div class="field"><label for="jina">Jina Lako</label><input id="jina" required type="text" placeholder="Andika jina lako"></div>
-        <div class="field"><label for="barua">Barua Pepe</label><input id="barua" required type="email" placeholder="jina@barua.com"></div>
-        <div class="field"><label for="huduma-select">Unahitaji Huduma Gani?</label>
-          <select id="huduma-select">
-            <option>Uundaji wa Tovuti / Programu</option>
-            <option>Mitandao</option>
-            <option>Usalama Mtandaoni</option>
-            <option>Huduma za Wingu</option>
-            <option>CCTV</option>
-            <option>Uchoraji Picha</option>
-            <option>Uuzaji wa Kidijitali</option>
-            <option>Mafunzo ya TEHAMA</option>
-            <option>Nyingine</option>
-          </select>
+      <form class="reveal" id="contactForm">
+        <div class="field"><label for="jina" data-i18n="form.name">Jina Lako</label><input id="jina" required type="text"></div>
+        <div class="field"><label for="barua" data-i18n="form.email">Barua Pepe</label><input id="barua" required type="email"></div>
+        <div class="field"><label for="huduma-select" data-i18n="form.serviceLabel">Unahitaji Huduma Gani?</label>
+          <select id="huduma-select"></select>
         </div>
-        <div class="field"><label for="ujumbe">Ujumbe</label><textarea id="ujumbe" required placeholder="Tuambie kuhusu mradi wako..."></textarea></div>
-        <button class="submit-btn" type="submit">Tuma Ujumbe</button>
-        <p class="form-note">Tutakujibu ndani ya saa 24 za siku za kazi.</p>
+        <div class="field"><label for="ujumbe" data-i18n="form.message">Ujumbe</label><textarea id="ujumbe" required></textarea></div>
+        <button class="submit-btn" type="submit" data-i18n="form.submit">Tuma Ujumbe</button>
+        <p class="form-note" data-i18n="form.note">Tutakujibu ndani ya saa 24 za siku za kazi.</p>
       </form>
     </div>
   </section>
@@ -539,57 +663,464 @@
   <div class="foot-grid">
     <div>
       <div class="foot-brand"><img src="assets/logo.png" alt="Manyusi"><span>MANYUSI TECHNOLOGIES LTD</span></div>
-      <p>Mshirika wako wa kiteknolojia — tunageuza changamoto za kidijitali za biashara yako kuwa fursa.</p>
+      <p data-i18n="footer.tagline">Mshirika wako wa kiteknolojia — tunageuza changamoto za kidijitali za biashara yako kuwa fursa.</p>
+      <form class="news-form" id="newsForm">
+        <input type="email" id="newsEmail" required data-i18n-placeholder="footer.newsPlaceholder" placeholder="Barua pepe yako">
+        <button type="submit" aria-label="Jisajili">→</button>
+      </form>
+      <p class="news-note" data-i18n="footer.newsNote">Taarifa za huduma mpya na vidokezo vya TEHAMA — mara moja kwa mwezi.</p>
     </div>
     <div>
-      <h5>Huduma</h5>
+      <h5 data-i18n="footer.servicesHead">Huduma</h5>
       <ul>
-        <li><a href="#huduma">Tovuti &amp; Programu</a></li>
-        <li><a href="#huduma">Mitandao</a></li>
-        <li><a href="#huduma">Usalama Mtandaoni</a></li>
-        <li><a href="#huduma">Huduma za Wingu</a></li>
+        <li><a href="#huduma" data-i18n="footer.s1">Tovuti &amp; Programu</a></li>
+        <li><a href="#huduma" data-i18n="footer.s2">Mitandao</a></li>
+        <li><a href="#huduma" data-i18n="footer.s3">Usalama Mtandaoni</a></li>
+        <li><a href="#huduma" data-i18n="footer.s4">Huduma za Wingu</a></li>
       </ul>
     </div>
     <div>
-      <h5>Kampuni</h5>
+      <h5 data-i18n="footer.companyHead">Kampuni</h5>
       <ul>
-        <li><a href="#kuhusu">Kuhusu Sisi</a></li>
+        <li><a href="#kuhusu" data-i18n="nav.about">Kuhusu Sisi</a></li>
         <li><a href="#bidhaa">SmartBiz Suite</a></li>
-        <li><a href="#mchakato">Mchakato Wetu</a></li>
-        <li><a href="#wasiliana">Wasiliana Nasi</a></li>
+        <li><a href="#mchakato" data-i18n="footer.process">Mchakato Wetu</a></li>
+        <li><a href="#wasiliana" data-i18n="nav.contact">Wasiliana Nasi</a></li>
       </ul>
     </div>
     <div>
-      <h5>Mawasiliano</h5>
+      <h5 data-i18n="footer.contactHead">Mawasiliano</h5>
       <ul>
         <li>Dar es Salaam, Tanzania</li>
         <li>info@manyusitech.co.tz</li>
-        <li>+255 629114986 </li>
+        <li><a href="tel:+255629115986" style="color:#B9C9D6;">+255 629 115 986</a></li>
       </ul>
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© <span id="year"></span> Manyusi Technologies Limited. Haki zote zimehifadhiwa.</span>
-    <span>Imetengenezwa Dar es Salaam 🇹🇿</span>
+    <span data-i18n-html="footer.copy">© <span id="year"></span> Manyusi Technologies Limited. Haki zote zimehifadhiwa.</span>
+    <span data-i18n="footer.made">Imetengenezwa Dar es Salaam 🇹🇿</span>
   </div>
 </footer>
 
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Funga">✕</button>
+    <div class="modal-icon" id="modalIcon"></div>
+    <h3 id="modalTitle"></h3>
+    <p class="modal-desc" id="modalDesc"></p>
+    <ul class="modal-list" id="modalList"></ul>
+    <a href="#wasiliana" class="modal-cta" id="modalCta">Wasiliana Nasi</a>
+  </div>
+</div>
+
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+/* ============ DATA ============ */
+const services = [
+  {id:'web', icon:'💻', color:'var(--navy)', bg:'rgba(11,61,102,0.08)'},
+  {id:'net', icon:'🌐', color:'var(--green)', bg:'rgba(63,165,53,0.1)'},
+  {id:'sec', icon:'🛡️', color:'var(--orange)', bg:'rgba(232,114,12,0.1)'},
+  {id:'cloud', icon:'☁️', color:'var(--navy)', bg:'rgba(11,61,102,0.08)'},
+  {id:'cctv', icon:'🎥', color:'var(--green)', bg:'rgba(63,165,53,0.1)'},
+  {id:'design', icon:'🎨', color:'var(--orange)', bg:'rgba(232,114,12,0.1)'},
+  {id:'marketing', icon:'📣', color:'var(--navy)', bg:'rgba(11,61,102,0.08)'},
+  {id:'training', icon:'🎓', color:'var(--green)', bg:'rgba(63,165,53,0.1)'}
+];
 
-  function handleSubmit(e){
-    e.preventDefault();
-    const btn = e.target.querySelector('.submit-btn');
-    const original = btn.textContent;
-    btn.textContent = 'Imetumwa ✓';
-    btn.style.background = 'var(--green)';
-    setTimeout(()=>{ btn.textContent = original; btn.style.background = ''; e.target.reset(); }, 2600);
+const priceTiers = [
+  {id:'starter', featured:false},
+  {id:'growth', featured:true},
+  {id:'enterprise', featured:false}
+];
+
+const translations = {
+  sw:{
+    "nav.about":"Kuhusu Sisi","nav.services":"Huduma","nav.product":"Bidhaa","nav.faq":"Maswali","nav.contact":"Wasiliana Nasi","nav.pricing":"Vifurushi",
+    "hero.eyebrow":"// Suluhisho za TEHAMA — Dar es Salaam, Tanzania",
+    "hero.title":"Tunajenga <em>mifumo ya kidijitali</em> inayosukuma biashara yako mbele.",
+    "hero.desc":"Manyusi Technologies Limited ni kampuni ya Kitanzania inayounganisha uundaji wa programu, mitandao, usalama mtandaoni na huduma za wingu kuwa suluhisho moja imara kwa makampuni, taasisi na wajasiriamali.",
+    "hero.cta1":"Anza Mradi Wako","hero.cta2":"Angalia Huduma Zetu",
+    "about.eyebrow":"Kuhusu Sisi",
+    "about.title":"Timu ya wataalamu wa teknolojia iliyojikita Tanzania, ikitazama mbele kikanda.",
+    "about.p1":"Manyusi Technologies Limited ilianzishwa kwa lengo moja: kuwezesha biashara na taasisi za Afrika Mashariki kutumia teknolojia kwa ufanisi, usalama na gharama nafuu. Tunachanganya uzoefu wa kimataifa na uelewa wa soko la ndani ili kutoa suluhisho zinazofanya kazi kweli.",
+    "about.p2":"Kuanzia mfumo wa mauzo kwa duka dogo, hadi mtandao salama wa taasisi kubwa — tunashughulikia mradi wako tangu wazo hadi utekelezaji, na kuendelea kukuhudumia baada ya hapo.",
+    "about.stat1":"Huduma kuu za TEHAMA","about.stat2":"Msisitizo wa soko la Tanzania","about.stat3":"Msaada wa kiufundi",
+    "services.eyebrow":"Huduma Zetu",
+    "services.title":"Kila kitu unachohitaji kudijitisha biashara yako, chini ya paa moja.",
+    "services.desc":"Tunatoa huduma nane kuu za teknolojia. Bonyeza kadi yoyote kuona maelezo zaidi.",
+    "services.more":"Soma Zaidi",
+    "svc.web.title":"Uundaji wa Tovuti na Programu","svc.web.short":"Tovuti, mifumo ya wavuti na programu za simu zilizoundwa mahsusi kwa mahitaji ya biashara yako.",
+    "svc.web.detail":"Tunaunda tovuti na programu zinazofanya kazi haraka, zinazovutia, na zinazokua pamoja na biashara yako — kutoka tovuti rahisi za kampuni hadi mifumo mikubwa ya wavuti na programu za simu (Android/iOS).",
+    "svc.web.li1":"Tovuti za kampuni na maduka ya mtandaoni","svc.web.li2":"Programu za simu za Android na iOS","svc.web.li3":"Mifumo maalum ya usimamizi wa biashara","svc.web.li4":"Matengenezo na uboreshaji wa mara kwa mara",
+    "svc.net.title":"Mitandao (Networking)","svc.net.short":"Usanifu, usimikaji na uimarishaji wa mitandao ya ofisi, taasisi na majengo ya biashara.",
+    "svc.net.detail":"Tunasanifu na kusimika mitandao thabiti ya waya na isiyo na waya kwa ofisi, shule, hospitali na majengo ya kibiashara, tukihakikisha kasi, uthabiti na uwezo wa kukua.",
+    "svc.net.li1":"Usimikaji wa LAN na WiFi ya taasisi","svc.net.li2":"Muunganisho wa matawi mengi","svc.net.li3":"Ufuatiliaji na matengenezo ya mtandao","svc.net.li4":"Ushauri wa muundo wa miundombinu",
+    "svc.sec.title":"Usalama Mtandaoni","svc.sec.short":"Ulinzi wa mifumo, taarifa na miundombinu yako dhidi ya vitisho vya kimtandao.",
+    "svc.sec.detail":"Tunalinda taarifa na mifumo yako dhidi ya udukuzi, virusi na uvujaji wa taarifa kwa kutumia zana za kisasa za usalama na taratibu bora za kiwango cha kimataifa.",
+    "svc.sec.li1":"Tathmini ya udhaifu wa mfumo","svc.sec.li2":"Ulinzi wa barua pepe na data","svc.sec.li3":"Firewall na ufuatiliaji wa vitisho","svc.sec.li4":"Mafunzo ya usalama kwa wafanyakazi",
+    "svc.cloud.title":"Huduma za Wingu (Cloud)","svc.cloud.short":"Uhamishaji na usimamizi wa mifumo yako kwenye mazingira ya wingu yenye uhakika na gharama nafuu.",
+    "svc.cloud.detail":"Tunakusaidia kuhamisha mifumo yako kwenda wingu (cloud), kupunguza gharama za vifaa, na kufikia taarifa zako popote ulipo kwa usalama.",
+    "svc.cloud.li1":"Uhamishaji wa data kwenda wingu","svc.cloud.li2":"Hifadhi salama na nakala rudufu (backup)","svc.cloud.li3":"Usimamizi wa seva za wingu","svc.cloud.li4":"Ushauri wa gharama na uwezo",
+    "svc.cctv.title":"CCTV na Ufuatiliaji","svc.cctv.short":"Usimikaji wa kamera za usalama na mifumo ya ufuatiliaji kwa nyumba, ofisi na maghala.",
+    "svc.cctv.detail":"Tunasimika mifumo ya kamera za CCTV zenye ubora wa hali ya juu, zinazoweza kuangaliwa kwa simu popote ulipo, kwa ajili ya nyumba, ofisi, maduka na maghala.",
+    "svc.cctv.li1":"Kamera za HD na usiku","svc.cctv.li2":"Ufuatiliaji kwa simu (remote viewing)","svc.cctv.li3":"Hifadhi ya video (DVR/NVR)","svc.cctv.li4":"Matengenezo na huduma baada ya ufungaji",
+    "svc.design.title":"Uchoraji Picha (Graphic Design)","svc.design.short":"Nembo, chapa na vifaa vya kuona vinavyoifanya biashara yako ikumbukwe.",
+    "svc.design.detail":"Timu yetu ya wabunifu inaunda nembo (logo), chapa (branding) na vifaa vya matangazo vinavyoakisi thamani na tabia ya biashara yako kwa namna ya kipekee.",
+    "svc.design.li1":"Ubunifu wa nembo (logo)","svc.design.li2":"Miongozo kamili ya chapa (brand guide)","svc.design.li3":"Vifaa vya matangazo na mitandao ya kijamii","svc.design.li4":"Uchapishaji wa vifaa vya biashara",
+    "svc.marketing.title":"Uuzaji wa Kidijitali","svc.marketing.short":"Mikakati ya mitandao ya kijamii, SEO na matangazo yanayokuletea wateja halisi.",
+    "svc.marketing.detail":"Tunakusaidia kuonekana mtandaoni na kupata wateja wapya kupitia mikakati ya mitandao ya kijamii, uboreshaji wa injini za utafutaji (SEO) na matangazo yenye lengo.",
+    "svc.marketing.li1":"Usimamizi wa mitandao ya kijamii","svc.marketing.li2":"Uboreshaji wa SEO","svc.marketing.li3":"Matangazo yanayolipiwa (Ads)","svc.marketing.li4":"Ripoti za matokeo kila mwezi",
+    "svc.training.title":"Mafunzo ya TEHAMA","svc.training.short":"Mafunzo ya vitendo kwa watu binafsi na timu za kazi kuhusu zana na mifumo ya kidijitali.",
+    "svc.training.detail":"Tunatoa mafunzo ya vitendo kwa watu binafsi na makampuni kuhusu matumizi ya kompyuta, usalama mtandaoni, na zana za kidijitali za kuongeza ufanisi kazini.",
+    "svc.training.li1":"Mafunzo ya msingi ya kompyuta","svc.training.li2":"Mafunzo ya usalama mtandaoni","svc.training.li3":"Mafunzo maalum kwa timu za kazi","svc.training.li4":"Vyeti vya kuhitimu mafunzo",
+    "modal.cta":"Wasiliana Nasi",
+    "product.eyebrow":"Bidhaa Yetu Kuu",
+    "product.desc":"Mfumo mmoja unaounganisha mauzo, hesabu, wateja na taarifa za biashara — ulioundwa mahsusi kwa mazingira ya biashara ya Afrika Mashariki.",
+    "product.li1":"Usimamizi wa mauzo na hesabu (stock) muda halisi","product.li2":"Taarifa za kifedha zinazoeleweka kwa haraka","product.li3":"Inafanya kazi vizuri hata kwa mtandao dhaifu",
+    "product.cta":"Omba Onyesho (Demo)",
+    "process.eyebrow":"Jinsi Tunavyofanya Kazi","process.title":"Mchakato ulio wazi, kutoka wazo hadi uzinduzi.",
+    "process.s1t":"Uelewa wa Mahitaji","process.s1p":"Tunakutana nawe kuelewa changamoto na malengo ya biashara yako.",
+    "process.s2t":"Usanifu wa Suluhisho","process.s2p":"Tunaandaa mpango na muundo unaoendana na bajeti na muda wako.",
+    "process.s3t":"Utekelezaji","process.s3p":"Timu yetu inajenga na kujaribu mfumo kabla ya kuukabidhi.",
+    "process.s4t":"Msaada wa Kudumu","process.s4p":"Tunaendelea kukuhudumia baada ya uzinduzi, muda wote unapohitaji.",
+    "faq.eyebrow":"Maswali Yanayoulizwa Mara kwa Mara","faq.title":"Bado una maswali? Hapa kuna majibu ya haraka.",
+    "faq.q1":"Mradi huchukua muda gani kukamilika?","faq.a1":"Inategemea na ukubwa wa mradi. Tovuti rahisi inaweza kuchukua wiki 1–2, wakati mifumo mikubwa ya biashara inaweza kuchukua wiki 6–12. Tutakupa muda kamili baada ya kuelewa mahitaji yako.",
+    "faq.q2":"Je, mnatoa huduma nje ya Dar es Salaam?","faq.a2":"Ndiyo. Tunahudumia wateja kote Tanzania, na baadhi ya huduma (kama mifumo ya wavuti na wingu) zinaweza kufanyika popote duniani kupitia mtandao.",
+    "faq.q3":"Gharama za mradi zinaanzia wapi?","faq.a3":"Gharama hutegemea aina na ukubwa wa mradi. Tunatoa makadirio bila malipo baada ya kuzungumza kuhusu mahitaji yako mahususi.",
+    "faq.q4":"Je, mnatoa msaada baada ya kukamilisha mradi?","faq.a4":"Ndiyo, tunatoa huduma za matengenezo na msaada wa kiufundi wa kudumu ili mfumo wako uendelee kufanya kazi vizuri.",
+    "pricing.eyebrow":"Vifurushi",
+    "pricing.title":"Chagua kifurushi kinachoendana na hatua ya biashara yako.",
+    "pricing.desc":"Kila mradi ni tofauti — vifurushi hivi ni mwongozo. Tutakupa bei kamili baada ya kuelewa mahitaji yako.",
+    "pricing.cta":"Pata Bei",
+    "price.starter.title":"Kianzio","price.starter.sub":"Kwa wajasiriamali na biashara ndogo zinazoanza kidijitali.",
+    "price.starter.li1":"Tovuti ya kurasa 1–5","price.starter.li2":"Muundo unaofaa simu (responsive)","price.starter.li3":"Barua pepe ya kampuni","price.starter.li4":"Usimikaji wa awali wa mtandao mdogo",
+    "price.growth.title":"Kawaida","price.growth.sub":"Kwa biashara zinazokua zenye mahitaji ya mfumo kamili.","price.growth.badge":"Maarufu Zaidi",
+    "price.growth.li1":"Tovuti/mfumo maalum wa wavuti","price.growth.li2":"Mtandao wa ofisi na CCTV","price.growth.li3":"Uuzaji wa kidijitali wa kila mwezi","price.growth.li4":"Msaada wa kiufundi wa kudumu",
+    "price.enterprise.title":"Kampuni","price.enterprise.sub":"Kwa taasisi na makampuni makubwa yenye miundombinu changamano.",
+    "price.enterprise.li1":"Mifumo ya wingu na usalama wa hali ya juu","price.enterprise.li2":"Muunganiko wa matawi mengi","price.enterprise.li3":"MTL SmartBiz Suite iliyorekebishwa","price.enterprise.li4":"Meneja maalum wa mradi",
+    "tz.eyebrow":"Kutoka Dar es Salaam, Kwenda Taifa Zima",
+    "tz.title":"Tunahudumia wateja kote Tanzania.",
+    "tz.desc":"Ofisi yetu kuu ipo Dar es Salaam, lakini huduma zetu za wavuti, wingu na mifumo ya kidijitali zinawafikia wateja popote nchini — na nje ya mipaka ya Tanzania.",
+    "why.eyebrow":"Kwa Nini Utuchague","why.title":"Sababu wateja wanaendelea kutuamini.",
+    "why.1t":"Timu ya Ndani","why.1p":"Tunaelewa soko, lugha na changamoto za biashara za Kitanzania.",
+    "why.2t":"Utekelezaji wa Haraka","why.2p":"Miradi inaanza haraka na inafuata muda uliopangwa.",
+    "why.3t":"Msaada wa Kudumu","why.3p":"Hatuishii kuzindua — tunaendelea kukusaidia baadaye.",
+    "why.4t":"Mawasiliano Wazi","why.4p":"Utajua hatua ya mradi wako kila wakati, bila kutatanisha.",
+    "fcta.eyebrow":"Hatua Inayofuata","fcta.title":"Uko tayari kuanza mradi wako?",
+    "fcta.desc":"Tuandikie leo, tupate kukuelewa, na tukupe mpango wa kazi ndani ya siku 2.",
+    "fcta.cta1":"Tuma Ujumbe","fcta.cta2":"Chat WhatsApp",
+    "footer.newsPlaceholder":"Barua pepe yako","footer.newsNote":"Taarifa za huduma mpya na vidokezo vya TEHAMA — mara moja kwa mwezi.","footer.newsThanks":"Asante! ✓",
+    "contact.eyebrow":"Wasiliana Nasi","contact.title":"Tuambie kuhusu mradi wako.","contact.desc":"Jaza fomu au tumia mawasiliano hapa chini — timu yetu itakujibu haraka.",
+    "contact.officeLabel":"Ofisi","contact.officeValue":"Dar es Salaam, Tanzania","contact.emailLabel":"Barua Pepe","contact.phoneLabel":"Simu / WhatsApp",
+    "form.name":"Jina Lako","form.email":"Barua Pepe","form.serviceLabel":"Unahitaji Huduma Gani?","form.message":"Ujumbe","form.submit":"Tuma Ujumbe","form.note":"Tutakujibu ndani ya saa 24 za siku za kazi.","form.sent":"Imetumwa ✓","form.other":"Nyingine",
+    "footer.tagline":"Mshirika wako wa kiteknolojia — tunageuza changamoto za kidijitali za biashara yako kuwa fursa.",
+    "footer.servicesHead":"Huduma","footer.s1":"Tovuti & Programu","footer.s2":"Mitandao","footer.s3":"Usalama Mtandaoni","footer.s4":"Huduma za Wingu",
+    "footer.companyHead":"Kampuni","footer.process":"Mchakato Wetu","footer.contactHead":"Mawasiliano",
+    "footer.copy":"© <span id=\"year\"></span> Manyusi Technologies Limited. Haki zote zimehifadhiwa.",
+    "footer.made":"Imetengenezwa Dar es Salaam 🇹🇿"
+  },
+  en:{
+    "nav.about":"About Us","nav.services":"Services","nav.product":"Product","nav.faq":"FAQ","nav.contact":"Contact Us","nav.pricing":"Packages",
+    "hero.eyebrow":"// ICT Solutions — Dar es Salaam, Tanzania",
+    "hero.title":"We build <em>digital systems</em> that push your business forward.",
+    "hero.desc":"Manyusi Technologies Limited is a Tanzanian company bringing together software development, networking, cybersecurity and cloud services into one reliable solution for companies, institutions and entrepreneurs.",
+    "hero.cta1":"Start Your Project","hero.cta2":"View Our Services",
+    "about.eyebrow":"About Us",
+    "about.title":"A team of technology experts rooted in Tanzania, with a regional outlook.",
+    "about.p1":"Manyusi Technologies Limited was founded with one goal: helping East African businesses and institutions use technology effectively, securely and affordably. We combine international experience with a deep understanding of the local market to deliver solutions that truly work.",
+    "about.p2":"From a point-of-sale system for a small shop to a secure network for a large institution — we handle your project from idea to delivery, and keep supporting you after that.",
+    "about.stat1":"Core ICT services","about.stat2":"Focused on the Tanzanian market","about.stat3":"Technical support",
+    "services.eyebrow":"Our Services",
+    "services.title":"Everything you need to digitize your business, under one roof.",
+    "services.desc":"We offer eight core technology services. Click any card to see more detail.",
+    "services.more":"Read More",
+    "svc.web.title":"Website & App Development","svc.web.short":"Websites, web platforms and mobile apps built specifically around your business needs.",
+    "svc.web.detail":"We build fast, attractive websites and apps that grow with your business — from simple company websites to large web platforms and mobile apps (Android/iOS).",
+    "svc.web.li1":"Company websites and online stores","svc.web.li2":"Android and iOS mobile apps","svc.web.li3":"Custom business management systems","svc.web.li4":"Ongoing maintenance and upgrades",
+    "svc.net.title":"Networking","svc.net.short":"Design, installation and hardening of networks for offices, institutions and commercial buildings.",
+    "svc.net.detail":"We design and install reliable wired and wireless networks for offices, schools, hospitals and commercial buildings, ensuring speed, stability and room to grow.",
+    "svc.net.li1":"LAN and enterprise WiFi setup","svc.net.li2":"Multi-branch connectivity","svc.net.li3":"Network monitoring and maintenance","svc.net.li4":"Infrastructure design consulting",
+    "svc.sec.title":"Cybersecurity","svc.sec.short":"Protecting your systems, data and infrastructure from cyber threats.",
+    "svc.sec.detail":"We protect your data and systems from hacking, malware and data leaks using modern security tools and internationally recognized best practices.",
+    "svc.sec.li1":"System vulnerability assessment","svc.sec.li2":"Email and data protection","svc.sec.li3":"Firewalls and threat monitoring","svc.sec.li4":"Security awareness training for staff",
+    "svc.cloud.title":"Cloud Services","svc.cloud.short":"Migrating and managing your systems in a reliable, cost-effective cloud environment.",
+    "svc.cloud.detail":"We help you move your systems to the cloud, reduce hardware costs, and access your data securely from anywhere.",
+    "svc.cloud.li1":"Data migration to the cloud","svc.cloud.li2":"Secure storage and backups","svc.cloud.li3":"Cloud server management","svc.cloud.li4":"Cost and capacity planning",
+    "svc.cctv.title":"CCTV & Surveillance","svc.cctv.short":"Installing security cameras and monitoring systems for homes, offices and warehouses.",
+    "svc.cctv.detail":"We install high-quality CCTV camera systems that can be viewed remotely from your phone, for homes, offices, shops and warehouses.",
+    "svc.cctv.li1":"HD and night-vision cameras","svc.cctv.li2":"Remote viewing on mobile","svc.cctv.li3":"Video storage (DVR/NVR)","svc.cctv.li4":"Post-installation maintenance",
+    "svc.design.title":"Graphic Design","svc.design.short":"Logos, branding and visual assets that make your business memorable.",
+    "svc.design.detail":"Our design team creates logos, branding and marketing materials that uniquely reflect your business's values and personality.",
+    "svc.design.li1":"Logo design","svc.design.li2":"Complete brand guidelines","svc.design.li3":"Marketing and social media assets","svc.design.li4":"Print materials for your business",
+    "svc.marketing.title":"Digital Marketing","svc.marketing.short":"Social media, SEO and advertising strategies that bring you real customers.",
+    "svc.marketing.detail":"We help you get discovered online and win new customers through social media strategy, search engine optimization (SEO) and targeted advertising.",
+    "svc.marketing.li1":"Social media management","svc.marketing.li2":"SEO optimization","svc.marketing.li3":"Paid advertising campaigns","svc.marketing.li4":"Monthly performance reports",
+    "svc.training.title":"ICT Training","svc.training.short":"Hands-on training for individuals and teams on digital tools and systems.",
+    "svc.training.detail":"We offer hands-on training for individuals and companies on computer use, cybersecurity, and digital tools that boost workplace productivity.",
+    "svc.training.li1":"Basic computer training","svc.training.li2":"Cybersecurity awareness training","svc.training.li3":"Custom training for teams","svc.training.li4":"Certificates of completion",
+    "modal.cta":"Contact Us",
+    "product.eyebrow":"Our Flagship Product",
+    "product.desc":"A single system that unifies sales, inventory, customers and business insight — built specifically for the East African business environment.",
+    "product.li1":"Real-time sales and stock management","product.li2":"Financial insights you can understand at a glance","product.li3":"Works smoothly even on weak internet connections",
+    "product.cta":"Request a Demo",
+    "process.eyebrow":"How We Work","process.title":"A clear process, from idea to launch.",
+    "process.s1t":"Understanding Needs","process.s1p":"We meet with you to understand your business challenges and goals.",
+    "process.s2t":"Solution Design","process.s2p":"We prepare a plan and design that fits your budget and timeline.",
+    "process.s3t":"Implementation","process.s3p":"Our team builds and tests the system before handing it over.",
+    "process.s4t":"Ongoing Support","process.s4p":"We keep supporting you after launch, whenever you need it.",
+    "faq.eyebrow":"Frequently Asked Questions","faq.title":"Still have questions? Here are quick answers.",
+    "faq.q1":"How long does a project take?","faq.a1":"It depends on the size of the project. A simple website can take 1–2 weeks, while larger business systems can take 6–12 weeks. We'll give you a full timeline once we understand your needs.",
+    "faq.q2":"Do you serve clients outside Dar es Salaam?","faq.a2":"Yes. We serve clients across Tanzania, and some services (like web platforms and cloud systems) can be delivered anywhere via the internet.",
+    "faq.q3":"Where do project costs start?","faq.a3":"Cost depends on the type and size of the project. We provide a free estimate once we've discussed your specific requirements.",
+    "faq.q4":"Do you provide support after the project is done?","faq.a4":"Yes, we provide ongoing maintenance and technical support so your system keeps running smoothly.",
+    "pricing.eyebrow":"Packages",
+    "pricing.title":"Pick the package that fits your stage of growth.",
+    "pricing.desc":"Every project is different — these packages are a guide. We'll give you an exact quote once we understand your needs.",
+    "pricing.cta":"Get a Quote",
+    "price.starter.title":"Starter","price.starter.sub":"For entrepreneurs and small businesses starting their digital journey.",
+    "price.starter.li1":"1–5 page website","price.starter.li2":"Mobile-responsive design","price.starter.li3":"Business email setup","price.starter.li4":"Basic small-office network setup",
+    "price.growth.title":"Growth","price.growth.sub":"For growing businesses that need a complete system.","price.growth.badge":"Most Popular",
+    "price.growth.li1":"Custom website / web platform","price.growth.li2":"Office network and CCTV","price.growth.li3":"Monthly digital marketing","price.growth.li4":"Ongoing technical support",
+    "price.enterprise.title":"Enterprise","price.enterprise.sub":"For institutions and large companies with complex infrastructure.",
+    "price.enterprise.li1":"Cloud systems and advanced security","price.enterprise.li2":"Multi-branch connectivity","price.enterprise.li3":"Customized MTL SmartBiz Suite","price.enterprise.li4":"Dedicated project manager",
+    "tz.eyebrow":"From Dar es Salaam, To the Whole Nation",
+    "tz.title":"We serve clients across Tanzania.",
+    "tz.desc":"Our head office is in Dar es Salaam, but our web, cloud and digital systems reach clients anywhere in the country — and beyond Tanzania's borders.",
+    "why.eyebrow":"Why Choose Us","why.title":"Reasons clients keep trusting us.",
+    "why.1t":"Local Team","why.1p":"We understand the market, language and challenges of Tanzanian businesses.",
+    "why.2t":"Fast Delivery","why.2p":"Projects start quickly and follow an agreed timeline.",
+    "why.3t":"Ongoing Support","why.3p":"We don't stop at launch — we keep supporting you afterward.",
+    "why.4t":"Clear Communication","why.4p":"You'll always know where your project stands, with no confusion.",
+    "fcta.eyebrow":"Next Step","fcta.title":"Ready to start your project?",
+    "fcta.desc":"Write to us today, let us understand your needs, and get a work plan within 2 days.",
+    "fcta.cta1":"Send a Message","fcta.cta2":"Chat on WhatsApp",
+    "footer.newsPlaceholder":"Your email","footer.newsNote":"Updates on new services and ICT tips — once a month.","footer.newsThanks":"Thanks! ✓",
+    "contact.eyebrow":"Contact Us","contact.title":"Tell us about your project.","contact.desc":"Fill out the form or use the contact details below — our team will respond quickly.",
+    "contact.officeLabel":"Office","contact.officeValue":"Dar es Salaam, Tanzania","contact.emailLabel":"Email","contact.phoneLabel":"Phone / WhatsApp",
+    "form.name":"Your Name","form.email":"Email Address","form.serviceLabel":"Which Service Do You Need?","form.message":"Message","form.submit":"Send Message","form.note":"We'll reply within 24 business hours.","form.sent":"Sent ✓","form.other":"Other",
+    "footer.tagline":"Your technology partner — turning your business's digital challenges into opportunities.",
+    "footer.servicesHead":"Services","footer.s1":"Websites & Apps","footer.s2":"Networking","footer.s3":"Cybersecurity","footer.s4":"Cloud Services",
+    "footer.companyHead":"Company","footer.process":"Our Process","footer.contactHead":"Contact",
+    "footer.copy":"© <span id=\"year\"></span> Manyusi Technologies Limited. All rights reserved.",
+    "footer.made":"Made in Dar es Salaam 🇹🇿"
   }
+};
 
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
-  },{threshold:0.15});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+let currentLang = 'sw';
+
+/* ============ RENDER SERVICE CARDS ============ */
+const serviceGrid = document.getElementById('serviceGrid');
+function renderServices(){
+  serviceGrid.innerHTML = '';
+  services.forEach(s=>{
+    const t = translations[currentLang];
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'service-card';
+    card.style.setProperty('--accent', s.color);
+    card.style.setProperty('--accent-bg', s.bg);
+    card.innerHTML = `
+      <div class="service-icon">${s.icon}</div>
+      <h3>${t['svc.'+s.id+'.title']}</h3>
+      <p>${t['svc.'+s.id+'.short']}</p>
+      <span class="card-more">${t['services.more']} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    `;
+    card.addEventListener('click', ()=>openModal(s));
+    serviceGrid.appendChild(card);
+  });
+}
+
+/* ============ RENDER PRICING ============ */
+const priceGrid = document.getElementById('priceGrid');
+function renderPricing(){
+  const t = translations[currentLang];
+  priceGrid.innerHTML = '';
+  priceTiers.forEach(p=>{
+    const card = document.createElement('div');
+    card.className = 'price-card' + (p.featured ? ' featured' : '');
+    card.innerHTML = `
+      ${p.featured ? `<span class="price-badge">${t['price.'+p.id+'.badge']}</span>` : ''}
+      <h3>${t['price.'+p.id+'.title']}</h3>
+      <p class="price-sub">${t['price.'+p.id+'.sub']}</p>
+      <ul>${['li1','li2','li3','li4'].map(k=>`<li>${t['price.'+p.id+'.'+k]}</li>`).join('')}</ul>
+      <a href="#wasiliana" class="${p.featured ? 'btn-primary' : 'btn-ghost'}">${t['pricing.cta']}</a>
+    `;
+    priceGrid.appendChild(card);
+  });
+}
+
+/* ============ MODAL ============ */
+const overlay = document.getElementById('modalOverlay');
+const modalIcon = document.getElementById('modalIcon');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalList = document.getElementById('modalList');
+const modalCta = document.getElementById('modalCta');
+let lastFocused = null;
+
+function openModal(s){
+  const t = translations[currentLang];
+  modalIcon.textContent = s.icon;
+  modalIcon.style.background = s.bg;
+  modalIcon.style.color = s.color;
+  modalTitle.textContent = t['svc.'+s.id+'.title'];
+  modalDesc.textContent = t['svc.'+s.id+'.detail'];
+  modalList.innerHTML = ['li1','li2','li3','li4'].map(k=>`<li>${t['svc.'+s.id+'.'+k]}</li>`).join('');
+  modalCta.textContent = t['modal.cta'];
+  lastFocused = document.activeElement;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modalClose').focus();
+}
+function closeModal(){
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+  if(lastFocused) lastFocused.focus();
+}
+document.getElementById('modalClose').addEventListener('click', closeModal);
+overlay.addEventListener('click', e=>{ if(e.target === overlay) closeModal(); });
+modalCta.addEventListener('click', closeModal);
+document.addEventListener('keydown', e=>{ if(e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
+
+/* ============ FAQ ============ */
+const faqList = document.getElementById('faqList');
+function renderFaq(){
+  const t = translations[currentLang];
+  faqList.innerHTML = '';
+  [1,2,3,4].forEach(n=>{
+    const item = document.createElement('div');
+    item.className = 'faq-item';
+    item.innerHTML = `
+      <button class="faq-q" type="button">${t['faq.q'+n]}<span class="plus">+</span></button>
+      <div class="faq-a"><p>${t['faq.a'+n]}</p></div>
+    `;
+    item.querySelector('.faq-q').addEventListener('click', ()=>{
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+    faqList.appendChild(item);
+  });
+}
+
+/* ============ SERVICE SELECT (contact form) ============ */
+const selectEl = document.getElementById('huduma-select');
+function renderSelect(){
+  const t = translations[currentLang];
+  selectEl.innerHTML = services.map(s=>`<option>${t['svc.'+s.id+'.title']}</option>`).join('') + `<option>${t['form.other']}</option>`;
+}
+
+/* ============ I18N APPLY ============ */
+function applyI18n(){
+  const t = translations[currentLang];
+  document.documentElement.lang = currentLang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(t[key] !== undefined) el.textContent = t[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const key = el.getAttribute('data-i18n-html');
+    if(t[key] !== undefined) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const key = el.getAttribute('data-i18n-placeholder');
+    if(t[key] !== undefined) el.placeholder = t[key];
+  });
+  document.querySelectorAll('.lang-toggle button').forEach(btn=>{
+    btn.classList.toggle('active', btn.dataset.lang === currentLang);
+  });
+  document.getElementById('year').textContent = new Date().getFullYear();
+  renderServices();
+  renderPricing();
+  renderFaq();
+  renderSelect();
+}
+document.querySelectorAll('.lang-toggle button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    currentLang = btn.dataset.lang;
+    applyI18n();
+  });
+});
+
+/* ============ MOBILE MENU ============ */
+const burgerBtn = document.getElementById('burgerBtn');
+const mobilePanel = document.getElementById('mobilePanel');
+burgerBtn.addEventListener('click', ()=>{
+  const open = mobilePanel.classList.toggle('open');
+  burgerBtn.setAttribute('aria-expanded', open);
+  burgerBtn.textContent = open ? '✕' : '☰';
+});
+mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
+  mobilePanel.classList.remove('open');
+  burgerBtn.textContent = '☰';
+  burgerBtn.setAttribute('aria-expanded', false);
+}));
+
+/* ============ CONTACT FORM ============ */
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const btn = this.querySelector('.submit-btn');
+  const original = btn.textContent;
+  btn.textContent = translations[currentLang]['form.sent'];
+  btn.style.background = 'var(--green)';
+  setTimeout(()=>{ btn.textContent = original; btn.style.background = ''; this.reset(); renderSelect(); }, 2600);
+});
+
+/* ============ SCROLL REVEAL ============ */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ============ ANIMATED COUNTERS ============ */
+const counters = document.querySelectorAll('[data-count]');
+const counterIO = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){
+      const el = en.target;
+      const target = parseInt(el.dataset.count,10);
+      const suffix = el.dataset.suffix || '';
+      let cur = 0;
+      const step = Math.max(1, Math.round(target/40));
+      const tick = ()=>{
+        cur += step;
+        if(cur >= target){ el.textContent = target + suffix; return; }
+        el.textContent = cur + suffix;
+        requestAnimationFrame(tick);
+      };
+      tick();
+      counterIO.unobserve(el);
+    }
+  });
+},{threshold:0.5});
+counters.forEach(c=>counterIO.observe(c));
+
+/* ============ NEWSLETTER ============ */
+const newsForm = document.getElementById('newsForm');
+newsForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  const btn = this.querySelector('button');
+  const original = btn.textContent;
+  btn.textContent = '✓';
+  this.querySelector('input').value = '';
+  setTimeout(()=>{ btn.textContent = original; }, 2200);
+});
+
+/* ============ SCROLL PROGRESS + BACK TO TOP ============ */
+const progressBar = document.getElementById('progressBar');
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', ()=>{
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progressBar.style.width = pct + '%';
+  backToTop.classList.toggle('show', scrollTop > 500);
+}, {passive:true});
+backToTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+/* ============ INIT ============ */
+applyI18n();
 </script>
 </body>
 </html>
