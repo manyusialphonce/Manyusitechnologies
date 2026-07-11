@@ -1058,11 +1058,8 @@ mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
 }));
 
 /* ============ CONTACT FORM ============ */
-// TUMIA: Badilisha "YOUR_FORM_ID" hapa chini na ID ya fomu yako ya Formspree.
-// Jinsi ya kupata ID: fungua https://formspree.io -> jisajili bure -> "New Form" ->
-// nakili link ya "Your form's endpoint" (mfano https://formspree.io/f/abcdwxyz) -> bandika ID hiyo (abcdwxyz) hapa chini.
+// Fomu hii inatuma ujumbe kwa barua pepe pekee kupitia Formspree.
 const FORMSPREE_ID = "myzdgodn";
-const WHATSAPP_NUMBER = "255629114986";
 
 document.getElementById('contactForm').addEventListener('submit', async function(e){
   e.preventDefault();
@@ -1074,13 +1071,6 @@ document.getElementById('contactForm').addEventListener('submit', async function
   const service = document.getElementById('huduma-select').value;
   const message = document.getElementById('ujumbe').value.trim();
 
-  // 1) Fungua WhatsApp na ujumbe ukiwa tayari umejazwa
-  const waText = encodeURIComponent(
-    `Habari, jina langu ni ${name}.\nBarua pepe: ${email}\nHuduma: ${service}\nUjumbe: ${message}`
-  );
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`, '_blank');
-
-  // 2) Tuma nakala kwa barua pepe kupitia Formspree (ikiwa FORMSPREE_ID imewekwa)
   if (FORMSPREE_ID && FORMSPREE_ID !== "YOUR_FORM_ID") {
     try {
       await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
