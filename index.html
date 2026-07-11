@@ -1062,11 +1062,15 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
   e.preventDefault();
   const btn = this.querySelector('.submit-btn');
   const original = btn.textContent;
+  const FORMSPREE_ID = "myzdgodn";
+const WHATSAPP_NUMBER = "255629114986";
   btn.textContent = translations[currentLang]['form.sent'];
   btn.style.background = 'var(--green)';
   setTimeout(()=>{ btn.textContent = original; btn.style.background = ''; this.reset(); renderSelect(); }, 2600);
 });
 
+
+  
 /* ============ SCROLL REVEAL ============ */
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
