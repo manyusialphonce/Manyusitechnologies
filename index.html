@@ -638,7 +638,7 @@
           <iframe src="https://www.google.com/maps?q=Dar%20es%20Salaam,%20Tanzania&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ramani ya Dar es Salaam"></iframe>
         </div>
         <div class="social-row">
-          <a href="https://wa.me/255629115986" target="_blank" rel="noopener" aria-label="WhatsApp">wa</a>
+          <a href="https://wa.me/255629114986" target="_blank" rel="noopener" aria-label="WhatsApp">wa</a>
           <a href="#" aria-label="LinkedIn">in</a>
           <a href="#" aria-label="Instagram">ig</a>
           <a href="#" aria-label="X">x</a>
@@ -1058,19 +1058,46 @@ mobilePanel.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
 }));
 
 /* ============ CONTACT FORM ============ */
-document.getElementById('contactForm').addEventListener('submit', function(e){
+// TUMIA: Badilisha "YOUR_FORM_ID" hapa chini na ID ya fomu yako ya Formspree.
+// Jinsi ya kupata ID: fungua https://formspree.io -> jisajili bure -> "New Form" ->
+// nakili link ya "Your form's endpoint" (mfano https://formspree.io/f/abcdwxyz) -> bandika ID hiyo (abcdwxyz) hapa chini.
+const FORMSPREE_ID = "myzdgodn";
+const WHATSAPP_NUMBER = "255629114986";
+
+document.getElementById('contactForm').addEventListener('submit', async function(e){
   e.preventDefault();
   const btn = this.querySelector('.submit-btn');
   const original = btn.textContent;
-  const FORMSPREE_ID = "myzdgodn";
-const WHATSAPP_NUMBER = "255629114986";
+
+  const name = document.getElementById('jina').value.trim();
+  const email = document.getElementById('barua').value.trim();
+  const service = document.getElementById('huduma-select').value;
+  const message = document.getElementById('ujumbe').value.trim();
+
+  // 1) Fungua WhatsApp na ujumbe ukiwa tayari umejazwa
+  const waText = encodeURIComponent(
+    `Habari, jina langu ni ${name}.\nBarua pepe: ${email}\nHuduma: ${service}\nUjumbe: ${message}`
+  );
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`, '_blank');
+
+  // 2) Tuma nakala kwa barua pepe kupitia Formspree (ikiwa FORMSPREE_ID imewekwa)
+  if (FORMSPREE_ID && FORMSPREE_ID !== "YOUR_FORM_ID") {
+    try {
+      await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, email, service, message })
+      });
+    } catch (err) {
+      console.error('Formspree error:', err);
+    }
+  }
+
   btn.textContent = translations[currentLang]['form.sent'];
   btn.style.background = 'var(--green)';
   setTimeout(()=>{ btn.textContent = original; btn.style.background = ''; this.reset(); renderSelect(); }, 2600);
 });
 
-
-  
 /* ============ SCROLL REVEAL ============ */
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
